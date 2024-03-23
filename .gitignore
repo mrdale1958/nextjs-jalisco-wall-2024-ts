@@ -8,7 +8,7 @@
 
 # testing
 /coverage
-/public
+#/public
 
 # next.js
 /.next/
@@ -37,5 +37,5 @@ yarn-error.log*
 next-env.d.ts
 
 # big files
-/public/JAPI_ID_HISTORIA _FONDO_PANTALLA.png
+/public/JAPI_ID_HISTORIA_FONDO_PANTALLA.png
 /public/0_Imágenes/*
