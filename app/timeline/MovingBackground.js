@@ -1,12 +1,11 @@
 import { Config, SliderPosition } from '@/app/lib/data';
-import Image from "next/image";
 import styles from './SlidingDisplay.css';
+import BackgroundImage from './BackgroundImage.js';
 
 export default async function MovingBackground (){
   const sliderPosition = await  SliderPosition();
   const configData = await  Config();    
         //this.state = {color: "red"};
-        const alttext = 'background graphic';
         const sizesFix = "(min-width: " + configData.printedGraphicWidth + ") 100vw"
 
       let acceleratedPosition = configData.printedGraphicScaleX * sliderPosition;
@@ -18,14 +17,7 @@ export default async function MovingBackground (){
           {/* <object id="printed-svg-object" data="Timeline 11 ARTscreen versiondm.svg" type="image/svg+xml"> 
             <img src="background.jpg" />
           </object>	 */}
-          <Image src="/JAPI_ID_HISTORIA _FONDO_PANTALLA.png"
-                          alt={alttext}
-                          id="printed-png-object"
-                          className="dark:invert"
-                          width={configData.printedGraphicWidth}
-                          height={configData.printedGraphicHeight}
-                          priority
-                        />	
+          <BackgroundImage configData={configData} />
         </div>
         );
   }

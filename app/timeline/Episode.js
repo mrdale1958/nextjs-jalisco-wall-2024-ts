@@ -4,7 +4,7 @@
 //import FullLabel from './FullLabel.js';
 import FullScript from './FullScript.js';
 
-export default async function Episode(props ) {
+export default  function Episode(props ) {
   
  /*        this.state = {color: "red", 
                       timePosition: 0,

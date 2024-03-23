@@ -18,8 +18,8 @@ export default function FullScript(props) {
       eventBody = <div className='event-body' >{props.eventData['Acontecimiento']}</div>
           //dangerouslySetInnerHTML={{ __html: eventData['Acontecimiento']}} />
     }
-    let firstImage = null;
-    let imageSetData = null;
+    let firstImage;
+    let imageSetData;
     if (props.eventData['LocalImagen2'] != "") {
         imageSetData = [{}, {}];
         imageSetData[0].src = props.eventData['LocalImagen1']
@@ -42,10 +42,10 @@ export default function FullScript(props) {
         }
       } else if (props.eventData['LocalImagen1'] != "") {
         //console.log("image name", props.eventData['LocalImagen1'])
-        firstImage = <Image src={"/0_Imágenes/" + props.eventData.LocalImagen1 }
+        firstImage = <img src={"/0_Imágenes/" + props.eventData.LocalImagen1 }
         alt={props.eventData['Pie de imagen1']}
         className="dark:invert"
-        priority
+        
         width="200" height="200"
       />	
       }
@@ -59,9 +59,9 @@ export default function FullScript(props) {
             </div>
             <div className='event-heading' >{props.eventData['Año']}
             </div>
-            {eventBody}
+            { /* {eventBody} */ }
             {firstImage}
-            {(imageSetData && (imageSetData[0] != {})) ? <ImageSet imageList={imageSetData}/> : null}
+      {(imageSetData && (imageSetData[0] != {})) ? <ImageSet imageList={imageSetData}/> : null} 
             </div>
       );
   }

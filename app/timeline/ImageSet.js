@@ -14,10 +14,9 @@ export default  function ImageSet( props ) {
         //console.log("Episodes",event);
               
                 return(<div className='captioned-image' key={image.alt}>
-                    <Image src={"/0_Imágenes/" + image.src}
+                    <img src={"/0_Imágenes/" + image.src}
                         alt={image.alt}
                         className="dark:invert"
-                        priority
                         width="200" height="200"
                     />
                     <ImageCaption caption={image.caption}/>
