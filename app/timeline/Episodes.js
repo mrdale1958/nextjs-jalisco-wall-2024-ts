@@ -93,7 +93,7 @@ export default async function  Episodes () {
         let eventData = database[event];
         //console.log("Episodes",eventData);
 
-        timelineDiv.push(<Episode props={eventData} mode="full"/>);
+        timelineDiv.push(<Episode eventData={eventData} displayPosition={sliderPosition} config={configData} mode="full"/>);
     }
   }
 
@@ -102,12 +102,12 @@ export default async function  Episodes () {
       //let divs = buildRawDivs(timeline); //this.buildDivs(sortedData, this.props.sliderPosition);
      
         return (
-            <div id='TimelineEpisodes'>
+            <div id='timeline-block'>
             {
             timeline.map((event) => {
         //console.log("Episodes",event);
               
-                return(<Episode  eventData={event} />)
+                return(<Episode  eventData={event} config={configData}/>)
               })
             }
             {/* <GuideGrid configData={this.props.configData} /> */}

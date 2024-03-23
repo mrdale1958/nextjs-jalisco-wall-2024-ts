@@ -47,6 +47,8 @@ body {
 	overflow:visible;
 	position:absolute;
 	z-index: 6;
+	left: 0px;
+	top: 0px;
 }
 
 #centuries-block {
@@ -57,6 +59,10 @@ body {
 	position:absolute;
 	z-index: 5;
 	top:0;
+}
+.event-era {
+	position: relative;
+	top: -200px;
 }
 .century {
 	top: 0;

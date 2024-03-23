@@ -8,6 +8,7 @@
 
 # testing
 /coverage
+/public
 
 # next.js
 /.next/
@@ -34,3 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# big files
+/public/JAPI_ID_HISTORIA _FONDO_PANTALLA.png
+/public/0_Imágenes/*
