@@ -59,7 +59,7 @@ export default function FullScript(props) {
             </div>
             <div className='event-heading' >{props.eventData['Año']}
             </div>
-            { /* {eventBody} */ }
+            {eventBody}
             {firstImage}
       {(imageSetData && (imageSetData[0] != {})) ? <ImageSet imageList={imageSetData}/> : null} 
             </div>

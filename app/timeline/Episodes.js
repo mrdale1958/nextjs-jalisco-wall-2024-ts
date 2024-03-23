@@ -107,7 +107,7 @@ export default async function  Episodes () {
             timeline.map((event) => {
         //console.log("Episodes",event);
               
-                return(<Episode  eventData={event} config={configData}/>)
+                return(<Episode key={event.Number} eventData={event} config={configData}/>)
               })
             }
             {/* <GuideGrid configData={this.props.configData} /> */}
