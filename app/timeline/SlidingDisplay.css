@@ -93,46 +93,47 @@ body {
 .century.prehistory {
 	background-color: #00b18a;
 	opacity: 1.0;
-	width: 500px;
+	width: calc((0.07317073171-0.0243902439)*14764)px;
 	left:0;
 
 }
 .century.sixteenth {
 	background: 	#00b4e6;
 	opacity: 1.0;
-	width: 500px;
-	left:500px;
+	width: calc((0.243902439-0.07317073171)*14764)px;	
+	left: calc(0.07317073171*14764)px;
 }
 .century.seventeenth {
 	background: #f4d44f;
 	opacity: 1.0;
-	width: 500px;
-	left:1000px;
+	width: calc(0.0243902439*14764)px;	
+	left: calc(0.2682926829*14764)px;
 }
 .century.eighteenth {
 	background: #df1783;
 	opacity: 1.0;
-	width: 500px;
-	left:1500px;
+	width: calc((0.3902439024-0.2926829268)*14764)px;	
+	left: calc(0.2926829268*14764)px;
 }
 .century.nineteenth {
 	background: #ff5e38;
 	opacity: 1.0;
-	width: 500px;
-	left:2000px;
+	width: calc((0.5853658537-0.0243902439-0.3902439024)*14764)px;	
+	left: calc(0.3902439024*14764)px;
 }
 .century.twentieth {
 	background: #00b18a;
 	opacity: 1.0;
-	width: 500px;
-	left:2500px;
+	width: calc((1.0-0.07317073171-0.6097560976)*14764)px;	
+	left: calc(0.6097560976*14764)px;
 }
 .century.twentyfirst {
 	background: white;
 	opacity: 1.0;
-	width: 500px;
-	left:3000px;
+	width: calc((0.07317073171-0.0243902439)*14764)px;
+	left: calc(0.0243902439*14764)px;
 }
+
 .century_marks {
 	display:none;
 	background: gray;

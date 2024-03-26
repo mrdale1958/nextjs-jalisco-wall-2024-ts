@@ -1,6 +1,7 @@
 import { Config, SliderPosition } from '@/app/lib/data';
 import styles from './SlidingDisplay.css';
 import BackgroundImage from './BackgroundImage.js';
+import  { useState, useEffect } from 'react';
 
 export default async function MovingBackground (){
   //const sliderPosition = await  SliderPosition();

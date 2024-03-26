@@ -1,16 +1,26 @@
 import React from 'react';
-import { Timeline, Config, SliderPosition } from '@/app/lib/data';
+import { Timeline, Config} from '@/app/lib/data';
 import styles from './SlidingDisplay.css';
 import { Josefin_Sans } from "next/font/google";
+import  { useState, useEffect } from 'react';
 
 const brandon = Josefin_Sans({ subsets: ["latin"] });
 
 
 export default async function Centuries() {
-  const sliderPosition = await  SliderPosition();
+  //const sliderPosition = await  SliderPosition();
   const configData = await  Config();    
   const timeline = await  Timeline();   
+  [sliderPosition, setSliderPosition] = useState(0);
+  useEffect(() => {
+    const onMessage = (event) => setSliderPosition(event,data);
 
+    window.addEventListener('message', onMessage)
+
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
   // this.state = {color: "red"};
   return (
           <div id="centuries-block" className= {brandon.classname}>

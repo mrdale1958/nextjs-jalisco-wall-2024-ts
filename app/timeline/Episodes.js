@@ -1,14 +1,24 @@
 // import CenturyMarker from './CenturyMarker.js';
 //import GuideGrid from './GuideGrid.js';
-import { Timeline, Config, SliderPosition } from '@/app/lib/data';
+import { Timeline, Config } from '@/app/lib/data';
 import Episode from './Episode.js';
+import  { useState, useEffect } from 'react';
 
 
 export default async function  Episodes () {
-  const sliderPosition = await  SliderPosition();
+  //const sliderPosition = await  SliderPosition();
   const configData = await  Config();
   const timeline = await  Timeline();
+  [sliderPosition, setSliderPosition] = useState(0);
+  useEffect(() => {
+    const onMessage = (event) => setSliderPosition(event,data);
 
+    window.addEventListener('message', onMessage)
+
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
   const dummyEvent = {
     Type: 'Info',
     eventNumber: '41',
