@@ -1,10 +1,9 @@
 'use client'
-import { Config, SliderPosition } from '@/app/lib/data';
 import styles from './SlidingDisplay.css';
 import BackgroundImage from './BackgroundImage.js';
 import  { useState, useEffect } from 'react';
 
-export default async function MovingBackground (){
+export default  function MovingBackground (props){
   //const sliderPosition = await  SliderPosition();
   [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
@@ -16,7 +15,7 @@ export default async function MovingBackground (){
       window.removeEventListener('resize', onResize)
     }
   }, [])
-  const configData = await  Config();    
+  const configData = props.config;    
         //this.state = {color: "red"};
   const sizesFix = "(min-width: " + configData.printedGraphicWidth + ") 100vw"
 

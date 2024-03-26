@@ -4,12 +4,14 @@ import Episodes from './Episodes.js';
 //import MouseSlider from './MouseSlider.js';
 //import PhidgetSlider from './PhidgetSlider.js';
 import FauxPhidgetSlider from './FauxPhidgetSlider.js';
+import { Timeline, Config} from '@/app/lib/data';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const configData = await  Config();    
     return (
       <div className="">
         <div className="">
-            <MovingBackground />
+            <MovingBackground config={configData}/>
             <Centuries />
             <Episodes />
             {/* <PhidgetSlider /> **/}
