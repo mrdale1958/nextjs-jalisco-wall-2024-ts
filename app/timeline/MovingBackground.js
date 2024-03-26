@@ -1,3 +1,4 @@
+'use client'
 import { Config, SliderPosition } from '@/app/lib/data';
 import styles from './SlidingDisplay.css';
 import BackgroundImage from './BackgroundImage.js';
