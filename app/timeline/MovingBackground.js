@@ -5,15 +5,15 @@ import  { useState, useEffect } from 'react';
 
 export default  function MovingBackground (props){
   //const sliderPosition = await  SliderPosition();
-  [sliderPosition, setSliderPosition] = useState(0);
+  const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
-    const onMessage = (event) => setSliderPosition(event,data);
+    const onMessage = (event) => setSliderPosition(event.data);
 
     window.addEventListener('message', onMessage)
 
-    return () => {
-      window.removeEventListener('resize', onResize)
-    }
+    //return () => {
+   //   window.removeEventListener('resize', onResize)
+   // }
   }, [])
   const configData = props.config;    
         //this.state = {color: "red"};

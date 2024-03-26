@@ -1,24 +1,22 @@
 'use client'
 // import CenturyMarker from './CenturyMarker.js';
 //import GuideGrid from './GuideGrid.js';
-import { Timeline, Config } from '@/app/lib/data';
+//import { Timeline, Config } from '@/app/lib/data';
 import Episode from './Episode.js';
 import  { useState, useEffect } from 'react';
 
 
-export default async function  Episodes () {
+export default  function  Episodes (props) {
   //const sliderPosition = await  SliderPosition();
-  const configData = await  Config();
-  const timeline = await  Timeline();
-  [sliderPosition, setSliderPosition] = useState(0);
+  const configData = props.config;    
+  const timeline = props.timeline;    
+  const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
     const onMessage = (event) => setSliderPosition(event,data);
 
     window.addEventListener('message', onMessage)
 
-    return () => {
-      window.removeEventListener('resize', onResize)
-    }
+   
   }, [])
   const dummyEvent = {
     Type: 'Info',
@@ -115,7 +113,7 @@ export default async function  Episodes () {
         return (
             <div id='timeline-block'>
             {
-            timeline.map((event) => {
+            timeline?.map((event) => {
         //console.log("Episodes",event);
               
                 return(<Episode key={event.Number} eventData={event} config={configData}/>)

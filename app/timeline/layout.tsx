@@ -8,6 +8,7 @@ import { Timeline, Config} from '@/app/lib/data';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const configData = await  Config();    
+  const timeline = await  Timeline();    
     return (
       <div className="">
         <div className="">

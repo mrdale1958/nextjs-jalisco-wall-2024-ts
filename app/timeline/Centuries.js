@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { Timeline, Config} from '@/app/lib/data';
+//import { Timeline, Config} from '@/app/lib/data';
 import styles from './SlidingDisplay.css';
 import { Josefin_Sans } from "next/font/google";
 import  { useState, useEffect } from 'react';
@@ -8,19 +8,17 @@ import  { useState, useEffect } from 'react';
 const brandon = Josefin_Sans({ subsets: ["latin"] });
 
 
-export default async function Centuries() {
+export default  function Centuries(props) {
   //const sliderPosition = await  SliderPosition();
-  const configData = await  Config();    
-  const timeline = await  Timeline();   
-  [sliderPosition, setSliderPosition] = useState(0);
+  const configData = props.config;    
+  const timeline = props.timeline;    
+  const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
     const onMessage = (event) => setSliderPosition(event,data);
 
     window.addEventListener('message', onMessage)
 
-    return () => {
-      window.removeEventListener('resize', onResize)
-    }
+   
   }, [])
   // this.state = {color: "red"};
   return (
@@ -31,7 +29,6 @@ export default async function Centuries() {
           <div className="century eighteenth"><div className="century-label">Siglo XVII</div></div>
           <div className="century nineteenth"><div className="century-label">Siglo XIX</div></div>
           <div className="century twentieth"><div className="century-label">Siglo XX</div></div>
-          <div className="century twentyfirst"><div className="century-label">Siglo XXI</div></div>
 
         </div>
         );
