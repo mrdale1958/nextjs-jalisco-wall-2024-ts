@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { Timeline, Config} from '@/app/lib/data';
 import styles from './SlidingDisplay.css';
