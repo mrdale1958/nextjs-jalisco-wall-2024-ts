@@ -1,3 +1,4 @@
+'use client'
 // import CenturyMarker from './CenturyMarker.js';
 //import GuideGrid from './GuideGrid.js';
 import { Timeline, Config } from '@/app/lib/data';
