@@ -54,11 +54,11 @@ body {
 #centuries-block {
 	display: block;
 	width: 100vw;
-	height: 3%;
+	height: var(--century-height);
 	overflow:visible;
 	position:absolute;
 	z-index: 5;
-	top:0;
+margin-top: 550px;
 }
 .event-era {
 	position: relative;
@@ -78,14 +78,14 @@ body {
 	position: absolute;
 	padding: 20px 3px 0px 3px;	
 	z-index: 30;
-	font-size: 32pt;
+	font-size: 16pt;
 	font-style: normal;
 	font-weight: bold;
-	top: 40px;
+	top: -11px;
 	right: 40px;
 }
 .century {
-	height:var(--century-height);
+	height: 100%;
 	position: absolute;
 	z-index: 25;
 	top: 0px;

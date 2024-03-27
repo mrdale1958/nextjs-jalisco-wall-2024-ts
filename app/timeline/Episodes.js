@@ -29,8 +29,8 @@ export default  function  Episodes (props) {
     'Pie de imagen4': ''
   }
     //  this.state = {color: "red"};
-    function sortEventsByYear(database) {
-      let sortedByYear = database.sort((a,b) => (a.start > b.start) ? 1 : -1);
+    function sortEventsByYear(timeline) {
+      let sortedByYear = timeline.sort((a,b) => (a.start > b.start) ? 1 : -1);
 	    /* let uniqueExtendedYears = new Set();
 	    for (var event of sortedByYear) {
 		    if (event.Type === 'Info' )
@@ -41,12 +41,12 @@ export default  function  Episodes (props) {
       return([sortedByYear, 0]);
     }
    
-    function buildDivs(database, position) {
+    function buildDivs(timeline, position) {
       const timelineDiv = [];
       let lastYear = 0;
       let currentYear = [];
-      for (var event in  database) {
-        let eventData = database[event];
+      for (var event in  timeline) {
+        let eventData = timeline[event];
         if ( String(lastYear).slice(0,2) !== String(eventData.YEAR).slice(0,2)) {
           // timelineDiv.push(<CenturyMarker 
           //         key = {String(eventData.YEAR).slice(0,2) + '00' } 
@@ -90,12 +90,12 @@ export default  function  Episodes (props) {
       return( timelineDiv );
     }
 
-    function buildRawDivs(database) {
+    function buildRawDivs(timeline) {
       
 
       const timelineDiv = [];
-      for (var event in  database) {
-        let eventData = database[event];
+      for (var event in  timeline) {
+        let eventData = timeline[event];
         //console.log("Episodes",eventData);
         function getRange () { 
           return ( { left: fractionToPixels(eventData.start), right: fractionToPixels(eventData.end)})
@@ -114,10 +114,10 @@ export default  function  Episodes (props) {
         return (
             <div id='timeline-block'>
             {
-            timeline?.map((event) => {
-        //console.log("Episodes",event);
-                if (event.Number !== undefined){
-                  return(<Episode key={"epidoseN"+event.Number} displayPosition={displayPosition} eventData={event} configData={configData}/>)
+            timeline.map((event) => {
+        console.log("Episodes",event.eventNumber, event);
+                if (event.eventNumber !== undefined){
+                  return(<Episode key={"epidoseN"+event.eventNumber} displayPosition={displayPosition} eventData={event} configData={configData}/>)
               }})
             }
             {/* <GuideGrid configData={this.props.configData} /> */}
