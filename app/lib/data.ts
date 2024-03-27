@@ -8,7 +8,7 @@ export async function Config() {
 
    config.lastYear = config.startYear;
    config.availableClicks = config.clickDensity * config.travelDistance; // 39863
-   config.maxClicks = (config.endYear - config.startYear) * config.ticksPerYear;
+   //config.maxClicks = (config.endYear - config.startYear) * config.ticksPerYear;
    config.rightEdge = 1000; //window.innerWidth - config.yearLaneWidth - 100;  // why was this soooo off?
    //config.leftEdge = 0 + config.labelWidth;
    //config.rightEdge = config.screenWidth - config.labelWidth; 

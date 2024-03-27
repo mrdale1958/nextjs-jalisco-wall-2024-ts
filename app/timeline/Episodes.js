@@ -91,9 +91,7 @@ export default  function  Episodes (props) {
     }
 
     function buildRawDivs(database) {
-      const fractionToPixels = (fraction) => {
-        return (fraction * configData.maxClicks)
-      }
+      
 
       const timelineDiv = [];
       for (var event in  database) {

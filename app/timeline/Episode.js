@@ -12,7 +12,10 @@ export default  function Episode(props ) {
   */     //let modalDiv;
   //console.log("mudd", eventData.eventData.Type);
   //const episodeRange = props.eventData.getRange();
-  const episodeRange = { left: 0, right: 50000 };
+  const fractionToPixels = (fraction) => {
+    return (fraction * configData.maxClicks)
+  }
+  const episodeRange ={ left: fractionToPixels(eventData.start), right: fractionToPixels(eventData.end)}
   let mudd = props.eventData.Type;
       let magicDiv;
       let classList = "event-block " + props.eventData.Type;
