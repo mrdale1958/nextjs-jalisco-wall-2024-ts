@@ -2,7 +2,7 @@
     "incomingURL" : "",
     "travelDistance" : 157.4, "travelDistanceUnits" : "inches ... 6.674 screen width",
     "clickDensity" : 255, "clickDensityUnits" : "clicks per inch",
-    "availableClicks" :  39863,
+    "availableClicks" :  43148,
     "timelineData" : {},
     "layout" : "nonlinear","layoutChoices" : "square, log, superlog, linear",
     "startYear" : 1590,
