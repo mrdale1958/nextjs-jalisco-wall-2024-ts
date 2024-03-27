@@ -14,8 +14,9 @@ export default  function MovingParts (props){
         setSliderPosition(event.data);
         console.log("sliderPosition", event.data);
     }
-
-    return window.addEventListener('message', onMessage)
+    const eListener = window.addEventListener('message', onMessage);
+    console.log("eListener", eListener);
+    return (eListener);
 
     //return () => {
    //   window.removeEventListener('resize', onResize)
