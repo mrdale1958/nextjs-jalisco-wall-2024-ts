@@ -8,16 +8,15 @@ import  { useState, useEffect } from 'react';
 
 export default  function MovingParts (props){
   //const sliderPosition = await  SliderPosition();
-  console.log("setting up for useEffect");
   const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
     const onMessage = (event) => {
-        debugger;
-        setSliderPosition(event.data);
         console.log("sliderPosition", event.data);
+        setSliderPosition(event.data);
     }
+    console.log("setting up for useEffect");
     window.addEventListener("message", onMessage);
-    return (eListener);
+    return (() => window.removeEventListener("message"),  onMessage);
 
     //return () => {
    //   window.removeEventListener('resize', onResize)
