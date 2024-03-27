@@ -11,9 +11,14 @@ export default  function Episode(props ) {
                       };
   */     //let modalDiv;
   //console.log("mudd", eventData.eventData.Type);
+  const episodeRange = eventData.getRange();
   let mudd = props.eventData.Type;
       let magicDiv;
       let classList = "event-block " + props.eventData.Type;
+
+      if (props.displayPosition < episodeRange.left || props.displayPosition > episodeRange.right ) {
+        return(null);
+      }
 
       if (mudd == "Era") {
         // modalDiv = <Dot eventData = {this.props}/>

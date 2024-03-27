@@ -97,10 +97,17 @@ export default  function  Episodes (props) {
     }
 
     function buildRawDivs(database) {
+      const fractionToPixels = (fraction) => {
+        return (fraction * configData.maxClicks)
+      }
+
       const timelineDiv = [];
       for (var event in  database) {
         let eventData = database[event];
         //console.log("Episodes",eventData);
+        eventData.getRange = () => { 
+          return ( { left: fractionToPixels(eventData.start), right: fractionToPixels(eventData.end)})
+        }
 
         timelineDiv.push(<Episode eventData={eventData} displayPosition={sliderPosition} config={configData} mode="full"/>);
     }
@@ -116,7 +123,7 @@ export default  function  Episodes (props) {
             timeline?.map((event) => {
         //console.log("Episodes",event);
               
-                return(<Episode key={event.Number} eventData={event} config={configData}/>)
+                return(<Episode key={event.Number} displayPosition={sliderPosition} eventData={event} config={configData}/>)
               })
             }
             {/* <GuideGrid configData={this.props.configData} /> */}
