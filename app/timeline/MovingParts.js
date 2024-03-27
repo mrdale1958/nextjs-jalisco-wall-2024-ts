@@ -11,8 +11,8 @@ export default  function MovingParts (props){
   const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
     function onMessage (event) {
-        if ( event !== undefined ) {c
-            onsole.log("sliderPosition", event);
+        if ( event !== undefined ) {
+            console.log("sliderPosition", event);
             setSliderPosition(event.data);
         }
     }
