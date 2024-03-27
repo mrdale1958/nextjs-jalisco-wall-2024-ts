@@ -18,7 +18,14 @@ export default  function Episode(props ) {
       let classList = "event-block " + props.eventData.Type;
 
       if (props.displayPosition < episodeRange.left || props.displayPosition > episodeRange.right ) {
-        return(null);
+        return(        <div className='episode' key={props.eventData.eventNumber} 
+        id={"episode" +  props.eventData.eventNumber}
+        style={{left: props.eventData.start * props.configData.availableClicks,
+          zIndex: 2}}>
+          {}
+          
+        </div>
+);
       }
 
       if (mudd == "Era") {

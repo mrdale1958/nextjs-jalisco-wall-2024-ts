@@ -10,7 +10,10 @@ export default  function MovingParts (props){
   //const sliderPosition = await  SliderPosition();
   const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
-    const onMessage = (event) => setSliderPosition(event.data);
+    const onMessage = (event) => {
+        setSliderPosition(event.data);
+        debugger;
+    }
 
     window.addEventListener('message', onMessage)
 

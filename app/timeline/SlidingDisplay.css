@@ -81,6 +81,8 @@ body {
 	font-size: 32pt;
 	font-style: normal;
 	font-weight: bold;
+	top: 40px;
+	right: 40px;
 }
 .century {
 	height:var(--century-height);
