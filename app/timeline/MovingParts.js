@@ -19,6 +19,8 @@ export default  function MovingParts (props){
     console.log("setting up for useEffect");
     window.addEventListener("message", onMessage);
     window.onmessage = onMessage;
+    document.addEventListener("message", onMessage);
+    document.onmessage = onMessage;
     //return (() => window.removeEventListener("message"),  onMessage);
 
     //return () => {
