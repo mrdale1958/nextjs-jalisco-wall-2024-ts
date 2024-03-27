@@ -31,7 +31,7 @@ export default  function MovingParts (props){
   const timeline = props.timeline;    
 
   return (
-        <div className="">
+        <div className="main-slider-frame">
             <MovingBackground configData={configData} displayPosition={sliderPosition}/>
             <Centuries  configData={configData} displayPosition={sliderPosition}/>
             <Episodes  configData={configData} displayPosition={sliderPosition} timeline={timeline} />

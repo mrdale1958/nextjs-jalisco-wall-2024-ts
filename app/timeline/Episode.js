@@ -71,7 +71,7 @@ export default  function Episode(props ) {
                 mode = "dot";
             } 
         } 
-        let phaseClassName = "event-" + mode
+        let phaseClassName = ""; //"event-" + mode
          
          magicDiv = <FullScript id = {props.eventData.eventNumber} className = {"event-info " + phaseClassName} eventData = {props.eventData}
          displayPosition={props.displayPosition} 

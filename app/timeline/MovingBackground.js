@@ -11,7 +11,7 @@ export default  function MovingBackground (props){
 
   let acceleratedPosition = configData.printedGraphicScaleX * props.displayPosition;
     return (
-      <div className="h-full -top-124px .absolute z-0 opacity-[1.0]" style={{left: 
+      <div id="background-slider" className="" style={{left: 
               String(
                 Math.max(configData.availableClicks, 
                   Math.min(configData.printedGraphicOffset, -acceleratedPosition + configData.printedGraphicOffset))) + "px"}}>
