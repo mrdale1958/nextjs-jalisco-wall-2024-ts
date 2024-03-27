@@ -15,7 +15,7 @@ export default  function Episode(props ) {
   const fractionToPixels = (fraction) => {
     return (fraction * configData.maxClicks)
   }
-  const episodeRange ={ left: fractionToPixels(eventData.start), right: fractionToPixels(eventData.end)}
+  const episodeRange ={ left: fractionToPixels(props.eventData.start), right: fractionToPixels(props.eventData.end)}
   let mudd = props.eventData.Type;
       let magicDiv;
       let classList = "event-block " + props.eventData.Type;
