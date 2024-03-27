@@ -13,7 +13,7 @@ export default  function Episode(props ) {
   //console.log("mudd", eventData.eventData.Type);
   //const episodeRange = props.eventData.getRange();
   const fractionToPixels = (fraction) => {
-    return (fraction * configData.maxClicks)
+    return (fraction * props.configData.maxClicks)
   }
   const episodeRange ={ left: fractionToPixels(props.eventData.start), right: fractionToPixels(props.eventData.end)}
   let mudd = props.eventData.Type;
