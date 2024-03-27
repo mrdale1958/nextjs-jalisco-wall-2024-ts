@@ -116,9 +116,9 @@ export default  function  Episodes (props) {
             {
             timeline?.map((event) => {
         //console.log("Episodes",event);
-              
-                return(<Episode key={"epidoseN"+event.Number} displayPosition={displayPosition} eventData={event} configData={configData}/>)
-              })
+                if (event.Number !== undefined){
+                  return(<Episode key={"epidoseN"+event.Number} displayPosition={displayPosition} eventData={event} configData={configData}/>)
+              }})
             }
             {/* <GuideGrid configData={this.props.configData} /> */}
             </div>
