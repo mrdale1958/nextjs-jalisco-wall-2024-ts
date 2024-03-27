@@ -8,16 +8,10 @@ import  { useState, useEffect } from 'react';
 
 export default  function  Episodes (props) {
   //const sliderPosition = await  SliderPosition();
-  const configData = props.config;    
+  const configData = props.configData;    
   const timeline = props.timeline;    
-  const [sliderPosition, setSliderPosition] = useState(0);
-  useEffect(() => {
-    const onMessage = (event) => setSliderPosition(event,data);
-
-    window.addEventListener('message', onMessage)
-
-   
-  }, [])
+  const displayPosition = props.displayPosition;    
+  
   const dummyEvent = {
     Type: 'Info',
     eventNumber: '41',
@@ -71,7 +65,7 @@ export default  function  Episodes (props) {
           } else {
             let event0 = currentYear[0];
             let position = Number(event0.TickPosInInches) * configData.clickDensity;
-            let currentScreenPosition = position - sliderPosition + configData.screenWidth/2;
+            let currentScreenPosition = position - displayPosition + configData.screenWidth/2;
             if ( (currentScreenPosition >= configData.leftEdge ) &&
                  (currentScreenPosition < configData.rightEdge ))
             {
@@ -80,7 +74,7 @@ export default  function  Episodes (props) {
                               id = {lastYear} 
                               position = {position} 
                               yearsEvents = { currentYear }
-                              sliderPosition = {sliderPosition}
+                              sliderPosition = {displayPosition}
                               configData = {configData}/>);
             }
             currentYear = [ eventData ];
@@ -105,11 +99,12 @@ export default  function  Episodes (props) {
       for (var event in  database) {
         let eventData = database[event];
         //console.log("Episodes",eventData);
-        eventData.getRange = () => { 
+        function getRange () { 
           return ( { left: fractionToPixels(eventData.start), right: fractionToPixels(eventData.end)})
         }
+        eventData.getRange = getRange;
 
-        timelineDiv.push(<Episode eventData={eventData} displayPosition={sliderPosition} config={configData} mode="full"/>);
+        timelineDiv.push(<Episode eventData={eventData} displayPosition={displayPosition} configData={configData} mode="full"/>);
     }
   }
 
@@ -123,7 +118,7 @@ export default  function  Episodes (props) {
             timeline?.map((event) => {
         //console.log("Episodes",event);
               
-                return(<Episode key={event.Number} displayPosition={sliderPosition} eventData={event} config={configData}/>)
+                return(<Episode key={event.Number} displayPosition={displayPosition} eventData={event} configData={configData}/>)
               })
             }
             {/* <GuideGrid configData={this.props.configData} /> */}

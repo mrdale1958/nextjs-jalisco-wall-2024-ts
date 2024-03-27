@@ -1,6 +1,4 @@
-import MovingBackground from './MovingBackground.js';
-import Centuries from './Centuries.js';
-import Episodes from './Episodes.js';
+import MovingParts from './MovingParts.js';
 //import MouseSlider from './MouseSlider.js';
 //import PhidgetSlider from './PhidgetSlider.js';
 import FauxPhidgetSlider from './FauxPhidgetSlider.js';
@@ -11,14 +9,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
   const timeline = await  Timeline();    
     return (
       <div className="">
-        <div className="">
-            <MovingBackground config={configData}/>
-            <Centuries />
-            <Episodes />
-            {/* <PhidgetSlider /> **/}
-            {/* <FauxPhidgetSlider  /> */}
-
-        </div>
+        <MovingParts configData={configData} timeline={timeline} />
         <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
       </div>
     );

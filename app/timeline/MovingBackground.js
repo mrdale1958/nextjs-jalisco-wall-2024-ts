@@ -1,25 +1,15 @@
 'use client'
 import styles from './SlidingDisplay.css';
 import BackgroundImage from './BackgroundImage.js';
-import  { useState, useEffect } from 'react';
 
 export default  function MovingBackground (props){
   //const sliderPosition = await  SliderPosition();
-  const [sliderPosition, setSliderPosition] = useState(0);
-  useEffect(() => {
-    const onMessage = (event) => setSliderPosition(event.data);
-
-    window.addEventListener('message', onMessage)
-
-    //return () => {
-   //   window.removeEventListener('resize', onResize)
-   // }
-  }, [])
-  const configData = props.config;    
+  
+  const configData = props.configData;    
         //this.state = {color: "red"};
   const sizesFix = "(min-width: " + configData.printedGraphicWidth + ") 100vw"
 
-  let acceleratedPosition = configData.printedGraphicScaleX * sliderPosition;
+  let acceleratedPosition = configData.printedGraphicScaleX * props.displayPosition;
     return (
       <div className="h-full -top-124px .absolute z-0 opacity-[1.0]" style={{left: 
               String(

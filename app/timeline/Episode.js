@@ -11,7 +11,8 @@ export default  function Episode(props ) {
                       };
   */     //let modalDiv;
   //console.log("mudd", eventData.eventData.Type);
-  const episodeRange = eventData.getRange();
+  //const episodeRange = props.eventData.getRange();
+  const episodeRange = { left: 0, right: 50000 };
   let mudd = props.eventData.Type;
       let magicDiv;
       let classList = "event-block " + props.eventData.Type;
@@ -32,19 +33,19 @@ export default  function Episode(props ) {
          //modalDiv = <DateLabel eventData = {this.props}/>
          magicDiv = <FullScript id = {props.eventData.eventNumber} className = "event-info" eventData = {props.eventData}
          displayPosition={props.displayPosition} 
-         config={props.config}/>
+         configData={props.configData}/>
  
        } else if (mudd == "Bio") {
          //modalDiv = <FullLabel eventData = {this.props}/>
          magicDiv = <FullScript id = {props.eventData.eventNumber} className = "event-bio" eventData = {props.eventData}
          displayPosition={props.displayPosition} 
-         config={props.config}/>
+         configData={props.configData}/>
  
        } else if (mudd == "full") {
          //modalDiv = <FullScript className = "event-block" eventData = {this.props}/>
          magicDiv = <FullScript id = {props.eventData.eventNumber} className =  {classList} eventData = {props.eventData} 
          displayPosition={props.displayPosition} 
-         config={props.config}/>
+         configData={props.configData}/>
        }  else {
         magicDiv = <div>wth: {mudd}</div>
        }
@@ -53,7 +54,7 @@ export default  function Episode(props ) {
       return (
         <div className='episode' key={props.eventData.eventNumber} 
         id={"episode" +  props.eventData.eventNumber}
-        style={{left: props.eventData.start * props.config.availableClicks,
+        style={{left: props.eventData.start * props.configData.availableClicks,
           zIndex: 2}}>
           {magicDiv}
           
