@@ -101,6 +101,7 @@ export default  function  Episodes (props) {
           return ( { left: fractionToPixels(eventData.start), right: fractionToPixels(eventData.end)})
         }
         eventData.getRange = getRange;
+        event.position = fractionToPixels(eventData.start);
 
         timelineDiv.push(<Episode eventData={eventData} displayPosition={displayPosition} configData={configData} mode="full"/>);
     }

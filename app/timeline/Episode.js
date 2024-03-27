@@ -40,8 +40,39 @@ export default  function Episode(props ) {
                                 config={props.config}/>
  
        } else if (mudd == "Info") {
-         //modalDiv = <DateLabel eventData = {this.props}/>
-         magicDiv = <FullScript id = {props.eventData.eventNumber} className = "event-info" eventData = {props.eventData}
+        let currentScreenPosition = props.eventData.position - props.displayPosition + props.configData.screenWidth/2;
+        if ( currentScreenPosition >= props.configData.leftEdge) {
+            if (currentScreenPosition > props.configData.yearTrigger) {
+                //if (currentScreenPosition > this.props.configData.labelTrigger) {
+                    if (currentScreenPosition > props.configData.contentTrigger) {
+                        if (currentScreenPosition > props.configData.rightEdge - props.configData.contentTrigger) {
+                            //if (currentScreenPosition > this.props.configData.rightEdge - this.props.configData.labelTrigger) {
+                                if (currentScreenPosition > props.configData.rightEdge - props.configData.yearTrigger) {
+                                    if (currentScreenPosition < props.configData.rightEdge ) {
+                                        mode = "dot";
+                                    }									
+                                } else {
+                                    mode = "date";
+                                }
+                            //} else {
+                            //    mode = "none";
+                            //}
+                        } else {
+                            mode = "full";
+                        }
+                    //} else {
+                    //    mode = "none";
+                    //}				
+                } else {
+                    mode = "date";
+                }
+            } else {
+                mode = "dot";
+            } 
+        } 
+        let phaseClassName = "event-" + mode
+         
+         magicDiv = <FullScript id = {props.eventData.eventNumber} className = {"event-info " + phaseClassName} eventData = {props.eventData}
          displayPosition={props.displayPosition} 
          configData={props.configData}/>
  
