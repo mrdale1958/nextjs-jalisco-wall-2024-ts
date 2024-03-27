@@ -20,7 +20,7 @@ export default  function Episode(props ) {
       let magicDiv;
       let classList = "event-block " + props.eventData.Type;
 
-      if (props.displayPosition < episodeRange.left || props.displayPosition > episodeRange.right ) {
+    /*  if (props.displayPosition < episodeRange.left || props.displayPosition > episodeRange.right ) {
         return(        <div className='episode' key={props.eventData.eventNumber} 
         id={"episode" +  props.eventData.eventNumber}
         style={{left: props.eventData.start * props.configData.availableClicks,
@@ -29,7 +29,7 @@ export default  function Episode(props ) {
           
         </div>
 );
-      }
+      } */
 
       if (mudd == "Era") {
         // modalDiv = <Dot eventData = {this.props}/>
@@ -40,6 +40,7 @@ export default  function Episode(props ) {
                                 config={props.config}/>
  
        } else if (mudd == "Info") {
+        let mode = "none";
         let currentScreenPosition = props.eventData.position - props.displayPosition + props.configData.screenWidth/2;
         if ( currentScreenPosition >= props.configData.leftEdge) {
             if (currentScreenPosition > props.configData.yearTrigger) {
@@ -88,12 +89,12 @@ export default  function Episode(props ) {
          displayPosition={props.displayPosition} 
          configData={props.configData}/>
        }  else {
-        magicDiv = <div>wth: {mudd}</div>
+        magicDiv = <div key="wth99">wth: {mudd}</div>
        }
        //debugger;
 
       return (
-        <div className='episode' key={props.eventData.eventNumber} 
+        <div className='episode' key={"episode" +  props.eventData.eventNumber} 
         id={"episode" +  props.eventData.eventNumber}
         style={{left: props.eventData.start * props.configData.availableClicks,
           zIndex: 2}}>

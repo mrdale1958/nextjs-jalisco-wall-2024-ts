@@ -103,7 +103,7 @@ export default  function  Episodes (props) {
         eventData.getRange = getRange;
         event.position = fractionToPixels(eventData.start);
 
-        timelineDiv.push(<Episode eventData={eventData} displayPosition={displayPosition} configData={configData} mode="full"/>);
+        timelineDiv.push(<Episode key={event.position} eventData={eventData} displayPosition={displayPosition} configData={configData} mode="full"/>);
     }
   }
 
@@ -117,7 +117,7 @@ export default  function  Episodes (props) {
             timeline?.map((event) => {
         //console.log("Episodes",event);
               
-                return(<Episode key={event.Number} displayPosition={displayPosition} eventData={event} configData={configData}/>)
+                return(<Episode key={"epidoseN"+event.Number} displayPosition={displayPosition} eventData={event} configData={configData}/>)
               })
             }
             {/* <GuideGrid configData={this.props.configData} /> */}
