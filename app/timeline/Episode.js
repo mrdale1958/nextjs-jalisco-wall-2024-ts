@@ -25,7 +25,7 @@ export default  function Episode(props ) {
         id={"episode" +  props.eventData.eventNumber}
         style={{left: props.eventData.start * props.configData.availableClicks,
           zIndex: 2}}>
-          {""}
+          {"&nbsp;"}
           
         </div>
 );

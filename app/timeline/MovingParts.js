@@ -12,11 +12,11 @@ export default  function MovingParts (props){
   const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
     const onMessage = (event) => {
-        setSliderPosition(event.data);
+        debugger;
+        window.addEventListener('MessageEvent'      setSliderPosition(event.data);
         console.log("sliderPosition", event.data);
     }
-    const eListener = window.addEventListener('message', onMessage);
-    console.log("eListener", eListener);
+    window.addEventListener("message", onMessage);
     return (eListener);
 
     //return () => {
