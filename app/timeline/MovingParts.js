@@ -8,6 +8,7 @@ import  { useState, useEffect } from 'react';
 
 export default  function MovingParts (props){
   //const sliderPosition = await  SliderPosition();
+  console.log("setting up for useEffect");
   const [sliderPosition, setSliderPosition] = useState(0);
   useEffect(() => {
     const onMessage = (event) => {
