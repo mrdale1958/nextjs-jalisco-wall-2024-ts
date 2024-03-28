@@ -16,7 +16,7 @@
 	--education_dark:#403D3E;
 	--health_science_history_dark:#8F3A14;
 	--world_event_dark:#493B43;
-	--century-height: 153px;
+	--century-height: 53px;
 	--content-width: 320px;
 	--event_transition_time: 0.05s;
 }
@@ -58,6 +58,7 @@ body {
 	overflow:visible;
 	position:absolute;
 	z-index: 5;
+	top:0px;
 margin-top: 550px;
 }
 .event-era {
@@ -426,6 +427,7 @@ margin-top: 550px;
 	padding: 4px;
 	font-weight: normal;
 	border-top: black 1px solid;
+	width: 300px;
 }
 
 .event-dot .event-heading {

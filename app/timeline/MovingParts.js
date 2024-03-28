@@ -3,7 +3,7 @@ import styles from './SlidingDisplay.css';
 import MovingBackground from './MovingBackground.js';
 import Centuries from './Centuries.js';
 import Episodes from './Episodes.js';
-
+import {updateNumber} from './utils.js'
 import  { useState, useEffect } from 'react';
 
 export default  function MovingParts (props){
@@ -19,6 +19,7 @@ export default  function MovingParts (props){
     console.log("setting up for useEffect");
     window.addEventListener("message", onMessage);
     window.onmessage = onMessage;
+    window.hack = function(msg) { console.log("hack", msg); };
     document.addEventListener("message", onMessage);
     document.onmessage = onMessage;
     //return (() => window.removeEventListener("message"),  onMessage);
