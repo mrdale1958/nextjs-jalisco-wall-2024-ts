@@ -19,7 +19,10 @@ export default  function MovingParts (props){
     console.log("setting up for useEffect");
     window.addEventListener("message", onMessage);
     window.onmessage = onMessage;
-    window.hack = function(msg) { console.log("hack", msg); };
+    window.hack = function(msg) { 
+        console.log("hack", msg); 
+        setSliderPosition(msg);
+    };
     document.addEventListener("message", onMessage);
     document.onmessage = onMessage;
     //return (() => window.removeEventListener("message"),  onMessage);
