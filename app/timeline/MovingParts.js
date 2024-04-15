@@ -12,24 +12,13 @@ export default  function MovingParts (props){
   useEffect(() => {
     function onMessage (event) {
         if ( event !== undefined ) {
-            console.log("sliderPosition", event);
+            //console.log("sliderPosition", event);
             setSliderPosition(event.data);
         }
     }
-    console.log("setting up for useEffect");
+    //console.log("setting up for useEffect");
     window.addEventListener("message", onMessage);
-    window.onmessage = onMessage;
-    window.hack = function(msg) { 
-        console.log("hack", msg); 
-        setSliderPosition(msg);
-    };
-    document.addEventListener("message", onMessage);
-    document.onmessage = onMessage;
-    //return (() => window.removeEventListener("message"),  onMessage);
-
-    //return () => {
-   //   window.removeEventListener('resize', onResize)
-   // }
+   
   }, []);
   const configData = props.configData;    
   const timeline = props.timeline;    
@@ -37,7 +26,7 @@ export default  function MovingParts (props){
   return (
         <div className="main-slider-frame">
             <MovingBackground configData={configData} displayPosition={sliderPosition}/>
-            <Centuries  configData={configData} displayPosition={sliderPosition}/>
+            <Centuries  configData={configData} displayPosition={sliderPosition} timeline={timeline}/>
             <Episodes  configData={configData} displayPosition={sliderPosition} timeline={timeline} />
             {/* <PhidgetSlider /> **/}
             {/* <FauxPhidgetSlider  /> */}

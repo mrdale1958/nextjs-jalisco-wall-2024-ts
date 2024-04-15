@@ -11,9 +11,9 @@ export default  function MovingBackground (props){
 
   let acceleratedPosition = configData.printedGraphicScaleX * props.displayPosition;
     return (
-      <div id="background-slider" className="" style={{left: 
+      <div id="background-block" className="" style={{left: 
               String(
-                Math.max(configData.availableClicks, 
+                Math.max(-configData.availableClicks + configData.screenWidth, 
                   Math.min(configData.printedGraphicOffset, -acceleratedPosition + configData.printedGraphicOffset))) + "px"}}>
       {/* <object id="printed-svg-object" data="Timeline 11 ARTscreen versiondm.svg" type="image/svg+xml"> 
         <img src="background.jpg" />

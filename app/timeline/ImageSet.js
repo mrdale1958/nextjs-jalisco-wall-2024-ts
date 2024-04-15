@@ -13,20 +13,29 @@ export default  function ImageSet( props ) {
         <div className='image-set'>
             { 
             props.imageList.map((image) => {
-        //console.log("Episodes",event);
-        setKeyIndex += 1;
-        if (image.alt === undefined) {
-            image.alt = "foo" + (setKeyIndex+100);
-        }
-        return(<div className='captioned-image' key={image.alt + setKeyIndex}>
-            <img src={"/0_Imágenes/" + image.src}
-                alt={image.alt}
-                className="dark:invert"
-                width="200" height="200"
-            />
-            <ImageCaption caption={image.caption}/>
-            </div>
-        )
+                //console.log("Episodes",event);
+                setKeyIndex += 1;
+                if (image.src === undefined) {
+                    //console.log("ImageSet error", image);
+                    return (<></>)
+                }
+                if (image.alt === undefined) {
+                    image.alt = "foo" + (setKeyIndex+100);
+                }
+                let displayState = "off";
+                if (setKeyIndex === 1) {
+                    displayState = "on";
+                }
+                //console.log("ImageSet", image.src, image.alt, displayState, setKeyIndex);
+                return(<div className={"captioned-image " + displayState} key={image.alt + setKeyIndex}>
+                    <img src={"/0_Imágenes/" + image.src}
+                        alt={image.alt}
+                        className="dark:invert"
+                        
+                    />
+                    <ImageCaption caption={image.caption}/>
+                    </div>
+                )
             }
             )
         }

@@ -1,4 +1,7 @@
-export default async  function Page() {
-  
+import Script from 'next/script'
+
+
+export default   function Page() {
+ 
 
 }

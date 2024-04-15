@@ -3,11 +3,12 @@ const csv = require('csvtojson');
 
 export async function Config() {
    let config: any = configData[0]
-   config.printedGraphicScaleX = 14788 / 40137 
    config.yearLaneWidth = 100; //window.innerWidth/20;
 
    config.lastYear = config.startYear;
-   config.availableClicks = config.clickDensity * config.travelDistance; // 39863
+   //config.availableClicks = config.clickDensity * config.travelDistance; // 39863
+   config.printedGraphicScaleX = (config.printedGraphicWidth -config.screenWidth) / config.maxClicks  ;
+
    //config.maxClicks = (config.endYear - config.startYear) * config.ticksPerYear;
    config.rightEdge = 1000; //window.innerWidth - config.yearLaneWidth - 100;  // why was this soooo off?
    //config.leftEdge = 0 + config.labelWidth;
@@ -16,6 +17,9 @@ export async function Config() {
    config.rightEdge = config.screenWidth; 
    config.leftSideSlope = 2/config.screenWidth;
    config.rightSideSlope = -2/config.screenWidth;
+   config.episode_width = (config.availableClicks + config.screenWidth - 
+                              (config.offset_left + config.offset_right)) / 
+                              (config.episode_count+1);
    let fauxPhidgetConfig = {
      running : false,
      slideIncrement : 20,

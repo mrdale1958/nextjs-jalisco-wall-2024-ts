@@ -10,7 +10,6 @@ export default function BackgroundImage  (props) {
             id="printed-png-object"
             className="dark:invert"
             width={props.configData.printedGraphicWidth}
-            height={props.configData.printedGraphicHeight}
             
             />	
     );

@@ -33,11 +33,11 @@ export default  function Episode(props ) {
 
       if (mudd == "Era") {
         // modalDiv = <Dot eventData = {this.props}/>
-         magicDiv = <FullScript id = {props.eventData.eventNumber} 
+        /*  magicDiv = <FullScript id = {props.eventData.eventNumber} 
                                 className = "event-era" 
                                 eventData = {props.eventData} 
                                 displayPosition={props.displayPosition} 
-                                config={props.config}/>
+                                config={props.config}/> */
  
        } else if (mudd == "Info") {
         let mode = "none";
@@ -94,10 +94,14 @@ export default  function Episode(props ) {
        //debugger;
 
       return (
-        <div className='episode' key={"episode" +  props.eventData.eventNumber} 
+        <div className={ "episode " + props.eventData.Level } key={"episode" +  props.eventData.eventNumber} 
         id={"episode" +  props.eventData.eventNumber}
-        style={{left: props.eventData.start * props.configData.availableClicks,
-          zIndex: 2}}>
+        style={{left: props.eventData.start * 
+                  (props.configData.availableClicks - 
+                      (props.configData.offset_left + props.configData.episode_width)) ,
+        // style={{left: props.eventData.start * props.configData.availableClicks + props.configData.offset_left,
+        //style={{left: props.eventData.start * (props.configData.availableClicks - (props.configData.offset_left + props.configData.offset_right)) + props.configData.offset_left,
+            zIndex: 2}}>
           {magicDiv}
           
         </div>

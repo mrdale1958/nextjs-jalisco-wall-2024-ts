@@ -3,7 +3,6 @@
 //import GuideGrid from './GuideGrid.js';
 //import { Timeline, Config } from '@/app/lib/data';
 import Episode from './Episode.js';
-import  { useState, useEffect } from 'react';
 
 
 export default  function  Episodes (props) {
@@ -112,11 +111,14 @@ export default  function  Episodes (props) {
       //let divs = buildRawDivs(timeline); //this.buildDivs(sortedData, this.props.sliderPosition);
      
         return (
-            <div id='timeline-block'>
+            <div id='timeline-block' style={{left: 
+              String(
+                Math.max(-configData.availableClicks + configData.screenWidth, 
+                  Math.min(configData.offset_left, props.configData.offset_left-props.displayPosition))) + "px"}}>
             {
             timeline.map((event) => {
-        console.log("Episodes",event.eventNumber, event);
-                if (event.eventNumber !== undefined){
+        //console.log("Episodes",event.eventNumber, event);
+                if (event.eventNumber !== undefined && event.Type === 'Info'){
                   return(<Episode key={"epidoseN"+event.eventNumber} displayPosition={displayPosition} eventData={event} configData={configData}/>)
               }})
             }

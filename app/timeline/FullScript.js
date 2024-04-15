@@ -15,16 +15,17 @@ export default function FullScript(props) {
     
     let eventBody;
     if (props.eventData['Acontecimiento'] !== "") {
-      eventBody = <div className='event-body' >{props.eventData['Acontecimiento']}</div>
+      eventBody = <div className='event-body' ><div className="event-text-container"><p className="event-text" >{props.eventData['Acontecimiento']}</p></div></div>
           //dangerouslySetInnerHTML={{ __html: eventData['Acontecimiento']}} />
     }
     let firstImage;
-    let imageSetData;
+    let imageSetData = [{}];
+    imageSetData[0].src = props.eventData['LocalImagen1']
+    imageSetData[0].caption = props.eventData['Pie de imagen1']
+    imageSetData[0].alt = props.eventData['LocalImagen1']
     if (props.eventData['LocalImagen2'] != "") {
-        imageSetData = [{}, {}];
-        imageSetData[0].src = props.eventData['LocalImagen1']
-        imageSetData[0].caption = props.eventData['Pie de imagen1']
-        imageSetData[0].alt = props.eventData['LocalImagen1']
+        imageSetData[1] = {};
+
         imageSetData[1].src = props.eventData['LocalImagen2']
         imageSetData[1].caption = props.eventData['Pie de imagen2']
         imageSetData[1].alt = props.eventData['LocalImagen2']
@@ -42,26 +43,30 @@ export default function FullScript(props) {
         }
       } else if (props.eventData['LocalImagen1'] != "") {
         //console.log("image name", props.eventData['LocalImagen1'])
-        firstImage = <img src={"/0_Imágenes/" + props.eventData.LocalImagen1 }
-        alt={props.eventData['Pie de imagen1']}
-        className="dark:invert"
+        if (props.eventData.LocalImagen1 === undefined) {
+          console.log("Primary Image error", props.eventData.LocalImagen1);
+      }
+        //firstImage = <img src={"/0_Imágenes/" + props.eventData.LocalImagen1 }
+        //alt={props.eventData['Pie de imagen1']}
+        //className="dark:invert first-image"
         
-        width="200" height="200"
-      />	
+        //width="200" height="200"
+      ///>	
       }
 
 
       return (
           <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}>
+            <div><span className='event-date' >{props.eventData['Año']}--{props.displayPosition}</span></div>
             <div className="event-block-header">
-              <span className='event-year'>{props.eventData['Año']}</span>
-              <span className='event-location'>{props.eventData['COUNTRY']}</span>
-            </div>
-            <div className='event-heading' >{props.eventData['Año']}
+              <span className='event-subject' >{props.eventData['Subject']}</span>
+
             </div>
             {eventBody}
+            <div className='event-images'>
             {firstImage}
       {(imageSetData && (imageSetData[0] != {})) ? <ImageSet imageList={imageSetData}/> : null} 
+            </div>
             </div>
       );
   }
