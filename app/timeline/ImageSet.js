@@ -8,10 +8,13 @@ export default  function ImageSet( props ) {
         }
     }
     let setKeyIndex = 0;
+    let imageCount = props.imageList.length;
+    
 
     return (
         <div className='image-set'>
             { 
+
             props.imageList.map((image) => {
                 //console.log("Episodes",event);
                 setKeyIndex += 1;
@@ -23,7 +26,7 @@ export default  function ImageSet( props ) {
                     image.alt = "foo" + (setKeyIndex+100);
                 }
                 let displayState = "off";
-                if (setKeyIndex === 1) {
+                if (setKeyIndex === props.currentImageIndex) {
                     displayState = "on";
                 }
                 //console.log("ImageSet", image.src, image.alt, displayState, setKeyIndex);

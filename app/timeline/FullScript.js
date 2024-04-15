@@ -20,6 +20,18 @@ export default function FullScript(props) {
     }
     let firstImage;
     let imageSetData = [{}];
+    let currentImageIndex = 0;
+    
+    for (image in imageSetData) {
+      let imageSlot = { 
+        left: props.left_edge + props.configData.episode_width/imageSetData.length * image, 
+        right: props.eventData.left_edge + props.configData.episode_width/imageSetData.length * (image + 1)};
+      if (props.displayPosition > imageSlot.left && props.displayPosition < imageSlot.right) {
+        currentImageIndex = image;
+      }
+        /* if (imageSetData[image].src === undefined) {
+        imageSetData[image].src = ""; */
+      }
     imageSetData[0].src = props.eventData['LocalImagen1']
     imageSetData[0].caption = props.eventData['Pie de imagen1']
     imageSetData[0].alt = props.eventData['LocalImagen1']
@@ -65,7 +77,7 @@ export default function FullScript(props) {
             {eventBody}
             <div className='event-images'>
             {firstImage}
-      {(imageSetData && (imageSetData[0] != {})) ? <ImageSet imageList={imageSetData}/> : null} 
+      {(imageSetData && (imageSetData[0] != {})) ? <ImageSet currentImageIndex={currentImageIndex} imageList={imageSetData}/> : null} 
             </div>
             </div>
       );
