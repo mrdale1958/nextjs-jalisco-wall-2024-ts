@@ -22,16 +22,7 @@ export default function FullScript(props) {
     let imageSetData = [{}];
     let currentImageIndex = 0;
     
-    for (var image in imageSetData) {
-      let imageSlot = { 
-        left: props.left_edge + props.configData.episode_width/imageSetData.length * image, 
-        right: props.eventData.left_edge + props.configData.episode_width/imageSetData.length * (image + 1)};
-      if (props.displayPosition > imageSlot.left && props.displayPosition < imageSlot.right) {
-        currentImageIndex = image;
-      }
-        /* if (imageSetData[image].src === undefined) {
-        imageSetData[image].src = ""; */
-      }
+    
     imageSetData[0].src = props.eventData['LocalImagen1']
     imageSetData[0].caption = props.eventData['Pie de imagen1']
     imageSetData[0].alt = props.eventData['LocalImagen1']
@@ -65,6 +56,19 @@ export default function FullScript(props) {
         //width="200" height="200"
       ///>	
       }
+      let slotWidth = props.configData.episode_width/(2*imageSetData.length);
+      let relativePosition = props.configData.episode_width/2 + Number(props.displayPosition) - props.left_edge;
+      for (var imageIndex in imageSetData) {
+        let image = Number(imageIndex);
+          let imageSlot = { 
+          left: slotWidth * image, 
+          right: slotWidth * (image + 1)};
+        if (relativePosition  > imageSlot.left && relativePosition < imageSlot.right) {
+          currentImageIndex = image;
+        }
+          /* if (imageSetData[image].src === undefined) {
+          imageSetData[image].src = ""; */
+        }
 
 
       return (

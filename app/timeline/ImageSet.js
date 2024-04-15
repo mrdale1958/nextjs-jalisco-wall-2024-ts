@@ -9,7 +9,7 @@ export default  function ImageSet( props ) {
     }
     let setKeyIndex = 0;
     let imageCount = props.imageList.length;
-    
+    //console.log("ImageSet", props.imageList, imageCount, props.currentImageIndex);
 
     return (
         <div className='image-set'>
@@ -17,7 +17,6 @@ export default  function ImageSet( props ) {
 
             props.imageList.map((image) => {
                 //console.log("Episodes",event);
-                setKeyIndex += 1;
                 if (image.src === undefined) {
                     //console.log("ImageSet error", image);
                     return (<></>)
@@ -26,9 +25,11 @@ export default  function ImageSet( props ) {
                     image.alt = "foo" + (setKeyIndex+100);
                 }
                 let displayState = "off";
-                if (setKeyIndex === props.currentImageIndex) {
+                if (setKeyIndex === Number(props.currentImageIndex)) {
                     displayState = "on";
                 }
+                setKeyIndex += 1;
+
                 //console.log("ImageSet", image.src, image.alt, displayState, setKeyIndex);
                 return(<div className={"captioned-image " + displayState} key={image.alt + setKeyIndex}>
                     <img src={"/0_Imágenes/" + image.src}
