@@ -74,7 +74,7 @@ export default  function Episode(props ) {
         let phaseClassName = ""; //"event-" + mode
          let left_edge = props.eventData.start * 
          (props.configData.availableClicks - 
-             (props.configData.offset_left + props.configData.episode_width));
+             (props.configData.offset_left + props.configData.episode_width))
          magicDiv = <FullScript left_edge={left_edge} id = {props.eventData.eventNumber} className = {"event-info " + phaseClassName} eventData = {props.eventData}
          displayPosition={props.displayPosition} 
          configData={props.configData}/>
@@ -98,7 +98,9 @@ export default  function Episode(props ) {
       return (
         <div className={ "episode " + props.eventData.Level } key={"episode" +  props.eventData.eventNumber} 
         id={"episode" +  props.eventData.eventNumber}
-        style={{left:  {left_edge},
+        style={{left: props.eventData.start * 
+                  (props.configData.availableClicks - 
+                      (props.configData.offset_left + props.configData.episode_width)) ,
         // style={{left: props.eventData.start * props.configData.availableClicks + props.configData.offset_left,
         //style={{left: props.eventData.start * (props.configData.availableClicks - (props.configData.offset_left + props.configData.offset_right)) + props.configData.offset_left,
             zIndex: 2}}>
