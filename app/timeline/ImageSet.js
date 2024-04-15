@@ -3,7 +3,7 @@ import ImageCaption from './ImageCaption.js';
 
 export default  function ImageSet( props ) {
     function build_divs(imageList) {
-        for (image in imageList) {
+        for (var image in imageList) {
 
         }
     }
