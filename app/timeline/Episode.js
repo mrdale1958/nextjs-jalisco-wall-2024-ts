@@ -98,7 +98,7 @@ export default  function Episode(props ) {
       return (
         <div className={ "episode " + props.eventData.Level } key={"episode" +  props.eventData.eventNumber} 
         id={"episode" +  props.eventData.eventNumber}
-        style={{left:  left_edge,
+        style={{left:  {left_edge},
         // style={{left: props.eventData.start * props.configData.availableClicks + props.configData.offset_left,
         //style={{left: props.eventData.start * (props.configData.availableClicks - (props.configData.offset_left + props.configData.offset_right)) + props.configData.offset_left,
             zIndex: 2}}>
