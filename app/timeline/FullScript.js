@@ -22,7 +22,7 @@ export default function FullScript(props) {
     let imageSetData = [{}];
     let currentImageIndex = 0;
     
-    for (image in imageSetData) {
+    for (var image in imageSetData) {
       let imageSlot = { 
         left: props.left_edge + props.configData.episode_width/imageSetData.length * image, 
         right: props.eventData.left_edge + props.configData.episode_width/imageSetData.length * (image + 1)};
