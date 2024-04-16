@@ -73,7 +73,7 @@ export default function FullScript(props) {
 
       return (
           <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}>
-            <div><span className='event-date' >{props.eventData['Año']}--{props.displayPosition}</span></div>
+            <div className='event-date' >{props.eventData['Año']}-- {String( props.displayPosition)}</div>
             <div className="event-block-header">
               <span className='event-subject' >{props.eventData['Subject']}</span>
 
@@ -82,7 +82,7 @@ export default function FullScript(props) {
             <div className='event-images'>
             {firstImage}
       {(imageSetData && (imageSetData[0] != {})) ? <ImageSet currentImageIndex={currentImageIndex} imageList={imageSetData}/> : null} 
-            </div>
+            </div> 
             </div>
       );
   }

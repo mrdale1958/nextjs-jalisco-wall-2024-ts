@@ -8,7 +8,7 @@ export default function BackgroundImage  (props) {
         <img src="/JAPI_ID_HISTORIA_FONDO_PANTALLA.png"
             alt={alttext}
             id="printed-png-object"
-            className="dark:invert"
+            className=""
             width={props.configData.printedGraphicWidth}
             
             />	
