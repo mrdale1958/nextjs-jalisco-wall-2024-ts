@@ -11,7 +11,7 @@ export default  function MovingParts (props){
   //const sliderPosition = await  SliderPosition();
   const [sliderPosition, setSliderPosition] = useState(0);
   const [idleMode,setIdleMode] = useState(false)
-  const units = 1; // 1 for testing, 60 for production
+  const units = 60; // 1 for testing, 60 for production
   useEffect(() => {
     const idleInterval = setInterval(() => {
         setIdleMode(true);
