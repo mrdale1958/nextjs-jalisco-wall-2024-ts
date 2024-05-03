@@ -73,7 +73,7 @@ export default function FullScript(props) {
 
       return (
           <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}>
-            <div className='event-date' >{props.eventData['Año']}-- {String( props.displayPosition)}</div>
+            <div className='event-date' >{props.eventData['Año']}</div>
             <div className="event-block-header">
               <span className='event-subject' >{props.eventData['Subject']}</span>
 

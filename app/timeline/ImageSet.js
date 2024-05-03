@@ -34,7 +34,7 @@ export default  function ImageSet( props ) {
                 return(<div className={"captioned-image " + displayState} key={image.alt + setKeyIndex}>
                     <img src={"/0_Imágenes/" + image.src}
                         alt={image.alt}
-                        className="dark:invert"
+                        className=""
                         
                     />
                     <ImageCaption caption={image.caption}/>

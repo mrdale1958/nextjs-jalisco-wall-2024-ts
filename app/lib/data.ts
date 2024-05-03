@@ -7,7 +7,7 @@ export async function Config() {
 
    config.lastYear = config.startYear;
    //config.availableClicks = config.clickDensity * config.travelDistance; // 39863
-   config.printedGraphicScaleX = (config.printedGraphicWidth -config.screenWidth) / config.maxClicks  ;
+   config.printedGraphicScaleX = (config.printedGraphicWidth -config.screenWidth - config.offset_right - config.offset_left) / config.maxClicks  ;
 
    //config.maxClicks = (config.endYear - config.startYear) * config.ticksPerYear;
    config.rightEdge = 1000; //window.innerWidth - config.yearLaneWidth - 100;  // why was this soooo off?
@@ -19,7 +19,7 @@ export async function Config() {
    config.rightSideSlope = -2/config.screenWidth;
    config.episode_width = (config.availableClicks + config.screenWidth - 
                               (config.offset_left + config.offset_right)) / 
-                              (config.episode_count+1);
+                              (config.episode_count);
    let fauxPhidgetConfig = {
      running : false,
      slideIncrement : 20,

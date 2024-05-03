@@ -24,8 +24,10 @@ export default  function MovingParts (props){
     function onMessage (event) {
         if ( event !== undefined ) {
             //console.log("sliderPosition", event);
+            if (typeof event.data === "number") {
             setSliderPosition(event.data);
             setIdleMode(false);
+            }
         }
     }
     //console.log("setting up for useEffect");

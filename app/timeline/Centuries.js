@@ -7,32 +7,44 @@ import { Josefin_Sans } from "next/font/google";
 const brandon = Josefin_Sans({ subsets: ["latin"] });
 export default  function Centuries(props) {
 
-  function placeLabel (century, displayLeft, configData) {
+function placeLabel (century, displayLeft, configData) {
   const centuryLeft = century.start * configData.availableClicks;
   const centuryRight = century.end * configData.availableClicks;
   const screenLeft = -displayLeft;
   const screenRight = -displayLeft + configData.screenWidth;
-    // not on screen?
-    if (centuryLeft >= screenRight || centuryRight <= screenLeft) {
-      return {left:"40px", position:"relative"};
+  let newLeft = Math.max( 10, Math.min( centuryRight, screenLeft - centuryLeft + configData.screenWidth/2 - 100));
+  return {left:newLeft +"px"};
+}
+
+  // not on screen?
+    /* if (centuryLeft >= screenRight || centuryRight <= screenLeft) {
+      console.log("not on screen", century.Año, centuryLeft, centuryRight, screenLeft, screenRight)
+      return {left:"40px"};
     }
+
   // screen less than half on left?
-  if (centuryRight <= screenLeft+configData.screenWidth/2) {
-    return {left:"40px", position:"relative"};
+  if (centuryRight <= screenLeft && centuryRight > screenLeft+(configData.screenWidth/2)) {
+    console.log("less than half on left", century.Año, centuryLeft, centuryRight, screenLeft, screenRight)
+    return {right:"40px"};
   }
   // screen more than half on left and more than half on right?
-  if (centuryLeft <= screenLeft+configData.screenWidth/2 && centuryRight >= screenRight+configData.screenWidth/2) {
+  if (centuryLeft <= screenLeft+configData.screenWidth/2 && centuryRight >= screenRight-configData.screenWidth/2) {
     // configData.screenWidth/2
-    return {left:"calc(var(--actual_screenwidth) / 2)"};
+    console.log("more than half on left and right", century.Año, centuryLeft, centuryRight, screenLeft, screenRight);
+    let newLeft = screenLeft - centuryLeft + configData.screenWidth/2;
+    return {left:newLeft +"px"};
   }
   // screen less than half on right?
-  if (centuryLeft >= screenRight+configData.screenWidth/2) {
-    return {right:"40px", position:"relative"}
+  if (centuryLeft >= screenRight && centuryLeft < screenRight - (configData.screenWidth/2)) {
+    console.log("less than half on right", century.Año, centuryLeft, centuryRight, screenLeft, screenRight);  
+    return {left:"40px"}
   }
-  return {right:"40px", position:"relative"}
+  // at startup displayLeft is NaN so just put it in the middle
+  console.log("default", century.Año, centuryLeft, centuryRight, screenLeft, screenRight);
+  let newLeft = screenLeft + configData.screenWidth/2
+    return {left:newLeft+"px"};
 
-
-}
+} */
 
   //const sliderPosition = await  SliderPosition();
   const configData = props.configData;    
@@ -44,15 +56,15 @@ export default  function Centuries(props) {
                                   {class:"nineteenth", index:19},
                                   {class:"twentieth", index:29},
                                   {class:"twentyfirst", index:43}] ;
-  const displayPostion =  Math.max(-configData.availableClicks + configData.screenWidth, 
+  const displayPosition =  Math.max(-configData.availableClicks + configData.screenWidth, 
     Math.min(configData.printedGraphicOffset, -props.displayPosition + configData.printedGraphicOffset));
-    const prehistory = timeline[centuryIndicesClasses[0].index];
+  const prehistory = timeline[centuryIndicesClasses[0].index];
   return (
           <div id="centuries-block" 
                 className= {brandon.classname} 
-                style={{left: String(displayPostion) + "px"}}>
+                style={{left: String(displayPosition) + "px"}}>
                   {centuryIndicesClasses.map((century) => {
-                    const placement = placeLabel(timeline[century.index], displayPostion, configData);
+                    const placement = placeLabel(timeline[century.index], displayPosition, configData);
                     return (
                       <div className={"century " + century.class} key={century.class}>
                         <div className="century-label" 

@@ -73,7 +73,7 @@ body {
 
 #centuries-block {
 	display: block;
-	width: (var(--actual_screenwidth) + var(--total_clicks)) * 1px;
+	width: calc((var(--actual_screenwidth) + var(--total_clicks)) * 1px);
 	height: var(--century-height);
 	position:absolute;
 	z-index: 5;
@@ -190,7 +190,7 @@ display: block;}
 
 .end-caps {
 	position: absolute;
-    width: calc(var(--total_clicks)* 1px);
+    width: 43450px;
     height: 2560px;
     background-color: transparent;
     z-index: 20;
@@ -542,7 +542,7 @@ bottom:1362px;
 }
 
 .event-text {
-	font-family: myriad-pro;
+	color: black;
 	font-style: normal;
 	font-weight: 300;
 	font-size: 32pt;
@@ -623,10 +623,16 @@ bottom:1362px;
 
 .image-caption {
 	text-align: center;
-  background:white;
+  background:#ffffff6b;
+  color: black;
   /* Padding equal to img border */
   padding: 15px 15px;
   font-size: 24pt;
+}
+
+.image-credit {
+	font-size:small;
+	font-style: italic;
 }
 
 .first-image {

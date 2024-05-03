@@ -13,7 +13,7 @@ export default  function MovingBackground (props){
     return (
       <div id="background-block" className="" style={{left: 
               String(
-                Math.max(-configData.availableClicks + configData.screenWidth, 
+                Math.max(-configData.availableClicks + configData.screenWidth - configData.offset_right, 
                   Math.min(configData.printedGraphicOffset, -acceleratedPosition + configData.printedGraphicOffset))) + "px"}}>
       {/* <object id="printed-svg-object" data="Timeline 11 ARTscreen versiondm.svg" type="image/svg+xml"> 
         <img src="background.jpg" />

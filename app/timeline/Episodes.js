@@ -40,54 +40,6 @@ export default  function  Episodes (props) {
       return([sortedByYear, 0]);
     }
    
-    function buildDivs(timeline, position) {
-      const timelineDiv = [];
-      let lastYear = 0;
-      let currentYear = [];
-      for (var event in  timeline) {
-        let eventData = timeline[event];
-        if ( String(lastYear).slice(0,2) !== String(eventData.YEAR).slice(0,2)) {
-          // timelineDiv.push(<CenturyMarker 
-          //         key = {String(eventData.YEAR).slice(0,2) + '00' } 
-          //         id = {String(eventData.YEAR).slice(0,2) + '00' }
-          //         position = {Number(eventData.TickPosInInches) * this.props.configData.clickDensity} />);
-//parseInt(yearToPosition(this.props.eventData.YEAR).slice(0,-2)) - 5 + "px"}
-          //lastYear = eventData.YEAR;
-        }
-
-        /*  pass 1 - last year is 0; enqueue current event
-            pass 2 - last year is 1590; render previous queue; enqueue current event
-        */
-        if ( lastYear !== eventData.EXTENDED_YEAR) {
-          if ( currentYear.length === 0 ) { // first time through 
-            currentYear = [ eventData ];
-          } else {
-            let event0 = currentYear[0];
-            let position = Number(event0.TickPosInInches) * configData.clickDensity;
-            let currentScreenPosition = position - displayPosition + configData.screenWidth/2;
-            if ( (currentScreenPosition >= configData.leftEdge ) &&
-                 (currentScreenPosition < configData.rightEdge ))
-            {
-              timelineDiv.push(<Year 
-                              key = {lastYear} 
-                              id = {lastYear} 
-                              position = {position} 
-                              yearsEvents = { currentYear }
-                              sliderPosition = {displayPosition}
-                              configData = {configData}/>);
-            }
-            currentYear = [ eventData ];
-          }
-        } else {
-          currentYear.push(eventData);
-        }
-        //debugger;
-        lastYear = eventData.EXTENDED_YEAR;
-
-        
-      }
-      return( timelineDiv );
-    }
 
     function buildRawDivs(timeline) {
       
@@ -113,7 +65,7 @@ export default  function  Episodes (props) {
         return (
             <div id='timeline-block' style={{left: 
               String(
-                Math.max(-configData.availableClicks + configData.screenWidth, 
+                Math.max(-configData.availableClicks + props.configData.offset_right, 
                   Math.min(configData.offset_left, props.configData.offset_left-props.displayPosition))) + "px"}}>
             {
             timeline.map((event) => {
