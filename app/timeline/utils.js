@@ -14,3 +14,16 @@ export function scanright(scantimeinseconds,speedinmilliseconds) {
     }, speedinmilliseconds)
     setTimeout(function() { clearInterval(timerID); }, 1000*scantimeinseconds);
 }
+
+function scanepisode(start, finish, speedinmilliseconds) {
+    let counter = start;
+    let timerID = setInterval(() => {
+        counter = counter + 1;
+        window.postMessage(counter);
+        if (counter > finish) {
+            clearInterval(timerID);
+        }
+
+    }, speedinmilliseconds)
+    setTimeout(function() { clearInterval(timerID); }, 1000*(finish-start));
+}

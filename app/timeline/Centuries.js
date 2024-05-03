@@ -12,7 +12,9 @@ function placeLabel (century, displayLeft, configData) {
   const centuryRight = century.end * configData.availableClicks;
   const screenLeft = -displayLeft;
   const screenRight = -displayLeft + configData.screenWidth;
-  let newLeft = Math.max( 10, Math.min( centuryRight, screenLeft - centuryLeft + configData.screenWidth/2 - 100));
+  const divBuffer = 300;
+  // console.log("placeLabel", century.Año, centuryLeft, centuryRight, screenLeft, screenRight);
+  let newLeft = Math.max( 10, Math.min( centuryRight - divBuffer, screenLeft - centuryLeft + configData.screenWidth/2 - 300));
   return {left:newLeft +"px"};
 }
 

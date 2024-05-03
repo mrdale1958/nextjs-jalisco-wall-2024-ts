@@ -56,7 +56,7 @@ export default function FullScript(props) {
         //width="200" height="200"
       ///>	
       }
-      let slotWidth = props.configData.episode_width/(2*imageSetData.length);
+      let slotWidth = props.configData.episode_width/(imageSetData.length);
       let relativePosition = props.configData.episode_width/2 + Number(props.displayPosition) - props.left_edge;
       for (var imageIndex in imageSetData) {
         let image = Number(imageIndex);
@@ -66,6 +66,7 @@ export default function FullScript(props) {
         if (relativePosition  > imageSlot.left && relativePosition < imageSlot.right) {
           currentImageIndex = image;
         }
+        //console.log("ImageSet", slotWidth, imageIndex, imageSlot, relativePosition, currentImageIndex);
           /* if (imageSetData[image].src === undefined) {
           imageSetData[image].src = ""; */
         }
