@@ -24,12 +24,18 @@
 	--event_transition_time: 0.05s;
 	--total_clicks: 43148;
 	--prehistory_start: 0px;
-	--siglo_16_start: 0.05px;
+	--siglo_16_start: 0.0685px;
+	--siglo_17_start: 0.259px;
+	--siglo_18_start: 0.285px;
+	--siglo_19_start: 0.399px;
+	--siglo_20_start: 0.588px;
+	--siglo_21_start: 0.895px;
+	/*--siglo_16_start: 0.05px;
 	--siglo_17_start: 0.25px;
 	--siglo_18_start: 0.275px;
 	--siglo_19_start: 0.375px;
 	--siglo_20_start: 0.6px;
-	--siglo_21_start: 0.925px;
+	--siglo_21_start: 0.925px;*/
 	--prehistory_color:  #00b18a;
 	--siglo_16_color:  #00b4e6;
 	--siglo_17_color:  #f4d44f;
