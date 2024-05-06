@@ -20,17 +20,17 @@ export default  function MovingParts (props){
 
         return () => clearInterval(idleInterval);
     }, [idleMode]);
-  useEffect(() => {
     function onMessage (event) {
         if ( event !== undefined ) {
             //console.log("sliderPosition", event);
-            if (typeof event.data === "number") {
+            if (typeof Number(event.data) === "number") {
             setSliderPosition(event.data);
             setIdleMode(false);
             }
         }
     }
-    //console.log("setting up for useEffect");
+    useEffect(() => {
+      //console.log("setting up for useEffect");
     window.addEventListener("message", onMessage);
    
   }, []);
