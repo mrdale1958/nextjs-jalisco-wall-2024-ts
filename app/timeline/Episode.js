@@ -15,7 +15,8 @@ export default  function Episode(props ) {
   const fractionToPixels = (fraction) => {
     return (fraction * props.configData.maxClicks)
   }
-  const episodeRange ={ left: fractionToPixels(props.eventData.start), right: fractionToPixels(props.eventData.end)}
+  const left_edge = props.eventData.start * (props.configData.availableClicks-props.configData.offset_left-props.configData.offset_right); //fractionToPixels(props.eventData.start);
+  //const episodeRange ={ left: fractionToPixels(props.eventData.start), right: fractionToPixels(props.eventData.end)}
   let mudd = props.eventData.Type;
       let magicDiv;
       let classList = "event-block " + props.eventData.Type;
@@ -72,9 +73,7 @@ export default  function Episode(props ) {
             } 
         } 
         let phaseClassName = ""; //"event-" + mode
-         let left_edge = props.eventData.start * 
-         (props.configData.availableClicks - 
-             (props.configData.offset_left + props.configData.episode_width))
+         
          magicDiv = <FullScript left_edge={left_edge} id = {props.eventData.eventNumber} className = {"event-info " + phaseClassName} eventData = {props.eventData}
          displayPosition={props.displayPosition} 
          configData={props.configData}/>
@@ -98,9 +97,9 @@ export default  function Episode(props ) {
       return (
         <div className={ "episode " + props.eventData.Level } key={"episode" +  props.eventData.eventNumber} 
         id={"episode" +  props.eventData.eventNumber}
-        style={{left: props.eventData.start * (props.configData.availableClicks-props.configData.offset_left-props.configData.offset_right)
+        style={{left: left_edge,
                   /* (props.configData.availableClicks + config.screenWidth - 
-                      (props.configData.offset_left + props.configData.episode_width))  */,
+                      (props.configData.offset_left + props.configData.episode_width))  */
         // style={{left: props.eventData.start * props.configData.availableClicks + props.configData.offset_left,
         //style={{left: props.eventData.start * (props.configData.availableClicks - (props.configData.offset_left + props.configData.offset_right)) + props.configData.offset_left,
             zIndex: 2}}>

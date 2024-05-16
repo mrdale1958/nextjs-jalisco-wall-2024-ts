@@ -1,4 +1,5 @@
 'use client'
+import DOMPurify from 'dompurify';
 import Image from "next/image"
 import ImageSet from './ImageSet.js';
 
@@ -15,8 +16,8 @@ export default function FullScript(props) {
     
     let eventBody;
     if (props.eventData['Acontecimiento'] !== "") {
-      eventBody = <div className='event-body' ><div className="event-text-container"><p className="event-text" >{props.eventData['Acontecimiento']}</p></div></div>
-          //dangerouslySetInnerHTML={{ __html: eventData['Acontecimiento']}} />
+      eventBody = <div className='event-body' ><div className="event-text-container"><p className="event-text" //</div>>{props.eventData['Acontecimiento']}</p></div></div>
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.eventData['Acontecimiento'])}} /> </div></div>
     }
     let firstImage;
     let imageSetData = [{}];
@@ -56,8 +57,8 @@ export default function FullScript(props) {
         //width="200" height="200"
       ///>	
       }
-      let slotWidth = props.configData.episode_width/(imageSetData.length);
-      let relativePosition = props.configData.episode_width/2 + Number(props.displayPosition) - props.left_edge;
+      let slotWidth = (props.configData.screenWidth-props.configData.episode_width)/(imageSetData.length);
+      let relativePosition = -(Number(props.displayPosition) - props.left_edge - props.configData.offset_left);
       for (var imageIndex in imageSetData) {
         let image = Number(imageIndex);
           let imageSlot = { 
@@ -74,7 +75,7 @@ export default function FullScript(props) {
 
       return (
           <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}>
-            <div className='event-date' >{props.eventData['Año'] }</div>
+            <div className='event-date' >{props.eventData['Año'] + " -- pos: "+ Number(props.displayPosition)  + " relative pos:"+ relativePosition} </div>
             <div className="event-block-header">
               <span className='event-subject' >{props.eventData['Subject']}</span>
 
