@@ -1,8 +1,9 @@
 @charset "UTF-8";
 :root {
 	--actual_screenwidth: 1601px;
+	--screencenter: 800.5px;
 	--actual_screenheight: 2840px;
-	--offset_left: 300px;
+	--offset_left: 1200px;
 	--century_text:#fdfcfc;
 	--century_gradient_end:#FFE7C6;
 	--disease_catastrophe:#405E71;
@@ -22,14 +23,14 @@
 	--century-height: 53px;
 	--content-width: 320px;
 	--event_transition_time: 0.05s;
-	--total_clicks: 43148;
+	--total_clicks: 43148px;
 	--prehistory_start: 0px;
-	--siglo_16_start: 0.0685px;
-	--siglo_17_start: 0.259px;
-	--siglo_18_start: 0.285px;
-	--siglo_19_start: 0.399px;
-	--siglo_20_start: 0.588px;
-	--siglo_21_start: 0.895px;
+	--siglo_16_start: 0.1000;
+	--siglo_17_start: 0.2683;
+	--siglo_18_start: 0.2924;
+	--siglo_19_start: 0.3886;
+	--siglo_20_start: 0.6050;
+	--siglo_21_start: 0.9177;
 	/*--siglo_16_start: 0.05px;
 	--siglo_17_start: 0.25px;
 	--siglo_18_start: 0.275px;
@@ -67,7 +68,7 @@ body {
 }
 #timeline-block {
 	display: block;
-	min-width: var(--total_clicks) * 1px;
+	min-width: calc(var(--actual_screenwidth) + var(--total_clicks) - var(--offset_left));
 	height: 100%;
 	overflow:visible;
 	position:absolute;
@@ -79,7 +80,7 @@ body {
 
 #centuries-block {
 	display: block;
-	width: calc((var(--actual_screenwidth) + var(--total_clicks)) * 1px);
+	width: calc(var(--actual_screenwidth) + var(--total_clicks));
 	height: var(--century-height);
 	position:absolute;
 	z-index: 5;
@@ -123,15 +124,19 @@ display: block;}
 }
 .century-label {
 	color: var(--century_text);
+	left: var(--screencenter);
 	opacity: 1;
-	position: absolute;
+	position: fixed;
 	padding: 20px 3px 0px 3px;	
 	z-index: 30;
 	font-size: 16pt;
 	font-style: normal;
 	font-weight: bold;
-	bottom: 4px;
+	bottom: 50%;
 	width: 300px;
+	text-shadow : 0 0 3px black;
+	transform: translate(-50%, 0);
+	text-align:center;
 }
 .century {
 	height: 100%;
@@ -145,8 +150,9 @@ display: block;}
 	background-color: var(--prehistory_color);
 	opacity: 1.0;
 /* 	width: calc(var(--siglo_16_start) * (1.025 * var(--total_clicks)) + var(--offset_left));
- */	width: calc((var(--siglo_16_start) * var(--total_clicks)) + var(--offset_left));
-	
+ 	width: calc((var(--siglo_16_start) * var(--total_clicks)) + var(--offset_left));
+*/
+	width: calc(var(--siglo_16_start) * var(--total_clicks));	
 	left:0;
 
 }
@@ -154,37 +160,37 @@ display: block;}
 	background: 	var(--siglo_16_color);
 	opacity: 1.0;
 	width: calc(((var(--siglo_17_start) - var(--siglo_16_start)) * var(--total_clicks)));	
-	left: calc((var(--siglo_16_start) * var(--total_clicks)) + var(--offset_left));
+	left: calc(var(--siglo_16_start) * var(--total_clicks));
 }
 .century.seventeenth {
 	background: var(--siglo_17_color);
 	opacity: 1.0;
 	width: calc((var(--siglo_18_start) - var(--siglo_17_start)) * var(--total_clicks));	
-	left: calc((var(--siglo_17_start) * var(--total_clicks)) + var(--offset_left));
+	left: calc(var(--siglo_17_start) * var(--total_clicks));
 }
 .century.eighteenth {
 	background: var(--siglo_18_color);
 	opacity: 1.0;
 	width: calc((var(--siglo_19_start) - var(--siglo_18_start)) * var(--total_clicks));	
-	left: calc((var(--siglo_18_start) * var(--total_clicks)) + var(--offset_left));
+	left: calc(var(--siglo_18_start) * var(--total_clicks));
 }
 .century.nineteenth {
 	background: var(--siglo_19_color);
 	opacity: 1.0;
 	width: calc((var(--siglo_20_start) - var(--siglo_19_start)) * var(--total_clicks));	
-	left: calc((var(--siglo_19_start)* var(--total_clicks)) + var(--offset_left));
+	left: calc(var(--siglo_19_start)* var(--total_clicks));
 }
 .century.twentieth {
 	background: var(--siglo_20_color);
 	opacity: 1.0;
 	width: calc((var(--siglo_21_start) - var(--siglo_20_start) ) * var(--total_clicks));	
-	left: calc( (var(--siglo_20_start)* var(--total_clicks)) + var(--offset_left));
+	left: calc(var(--siglo_20_start)* var(--total_clicks));
 }
 .century.twentyfirst {
 	background: var(--siglo_21_color);
 	opacity: 1.0;
-	width: calc((1.0px - var(--siglo_21_start)) * var(--total_clicks));
-	left: calc((var(--siglo_21_start) * var(--total_clicks)) + var(--offset_left));
+	width: calc((1.0375 - var(--siglo_21_start)) * var(--total_clicks));
+	left: calc(var(--siglo_21_start) * var(--total_clicks));
 }
 
 .century_marks {
@@ -197,7 +203,7 @@ display: block;}
 
 .end-caps {
 	position: absolute;
-    width: 43450px;
+    width: 44768px;
     height: 2560px;
     background-color: transparent;
     z-index: 20;
@@ -455,6 +461,7 @@ bottom:1362px;
 .event-block-header {
 	position: absolute;
 	left: 35px;
+	text-align: center;
 }
 
 .event-dot {

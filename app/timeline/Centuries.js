@@ -3,19 +3,29 @@ import React from 'react';
 //import { Timeline, Config} from '@/app/lib/data';
 import styles from './SlidingDisplay.css';
 import { Josefin_Sans } from "next/font/google";
+import { m } from 'framer-motion';
 
 const brandon = Josefin_Sans({ subsets: ["latin"] });
 export default  function Centuries(props) {
 
 function placeLabel (century, displayLeft, configData) {
-  const centuryLeft = century.start * configData.availableClicks;
-  const centuryRight = century.end * configData.availableClicks;
-  const screenLeft = -displayLeft;
-  const screenRight = -displayLeft + configData.screenWidth;
+  const centuryLeft = century.start * configData.availableClicks + displayLeft;
+  const centuryRight = century.end * configData.availableClicks + displayLeft;
+  const midscreen = configData.screenWidth/2;
+  const screenLeft = displayLeft;
+  const screenRight = displayLeft + configData.screenWidth;
   const divBuffer = 300;
+  const displayRight = displayLeft + configData.screenWidth;
   // console.log("placeLabel", century.Año, centuryLeft, centuryRight, screenLeft, screenRight);
-  let newLeft = Math.max( 10, Math.min( centuryRight - divBuffer, screenLeft - centuryLeft + configData.screenWidth/2 - 300));
-  return {left:newLeft +"px"};
+  let newLeft = {};
+  if ((centuryLeft > displayRight) || (centuryRight < displayLeft)) {
+    newLeft = {display:"none", left:"0px"};
+  } else if (centuryLeft > midscreen) {
+    newLeft = {left: String(centuryLeft - displayLeft) + "px"};
+  } else if (centuryRight < midscreen) {
+    newLeft = {left: String(displayRight - midscreen) + "px"};
+  }
+  return newLeft;
 }
 
   // not on screen?
@@ -58,8 +68,9 @@ function placeLabel (century, displayLeft, configData) {
                                   {class:"nineteenth", index:19},
                                   {class:"twentieth", index:29},
                                   {class:"twentyfirst", index:43}] ;
-  const displayPosition =  Math.max(-configData.availableClicks + configData.screenWidth, 
-    Math.min(configData.printedGraphicOffset, -props.displayPosition + configData.printedGraphicOffset));
+  const displayPosition =  -props.displayPosition;
+  //Math.max(-configData.availableClicks + configData.screenWidth, 
+  //  Math.min(configData.printedGraphicOffset, -props.displayPosition + configData.printedGraphicOffset));
   const prehistory = timeline[centuryIndicesClasses[0].index];
   return (
           <div id="centuries-block" 
@@ -71,9 +82,14 @@ function placeLabel (century, displayLeft, configData) {
                       <div className={"century " + century.class} key={century.class}>
                         <div className="century-label" 
                           style={placement}
-                          >{timeline[century.index].Año}
+                          >{timeline[century.index].Año + "p:" + placement.left + 
+                          " centuryLeft: " + (timeline[century.index].start  * configData.availableClicks + displayPosition) + 
+                          " centuryRight: " + (timeline[century.index].end * configData.availableClicks + displayPosition) + 
+                          " screenLeft: " + (-displayPosition) + 
+                          " screenRight: " + (-displayPosition + configData.screenWidth) +
+                          " midscreen: " + (-displayPosition + configData.screenWidth/2)}</div>
+                  
                         </div>
-                      </div>
                     )
                   })}
                   <div className="end-caps">
