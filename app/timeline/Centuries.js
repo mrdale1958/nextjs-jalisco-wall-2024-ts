@@ -27,7 +27,25 @@ function placeLabel (century, displayLeft, configData) {
   }
   return newLeft;
 }
-
+function placeLabel2 (century, displayLeft, configData) {
+  let newStyle = {};
+  const Rscreen = -displayLeft + configData.screenWidth;
+  const Lscreen = -displayLeft;
+  const Rbar = century.end * configData.availableClicks;
+  const Lbar = century.start * configData.availableClicks; 
+  const midpoint = -displayLeft + configData.screenWidth/2; 
+  const bumper = 200;
+  if ((Lbar > Rscreen) || (Rbar < Lscreen)) {
+    newStyle = {display:"none", left:"0px"};
+  }  else if ((Lbar < Rscreen) &&  (Lbar > midpoint-bumper)) {
+    newStyle = {left:"150px"};
+  } else if ((Rbar < midpoint+bumper) && (Rbar > Lscreen)) {
+    newStyle = {left:String( Rbar - bumper) + "px"};
+  } else if ((Lbar < midpoint) && (Rbar > midpoint)) {
+    newStyle = {left: String( midpoint - Lbar) + "px"};
+  }
+  return newStyle;
+}
   // not on screen?
     /* if (centuryLeft >= screenRight || centuryRight <= screenLeft) {
       console.log("not on screen", century.Año, centuryLeft, centuryRight, screenLeft, screenRight)
@@ -77,17 +95,17 @@ function placeLabel (century, displayLeft, configData) {
                 className= {brandon.classname} 
                 style={{left: String(displayPosition) + "px"}}>
                   {centuryIndicesClasses.map((century) => {
-                    const placement = placeLabel(timeline[century.index], displayPosition, configData);
+                    const placement = placeLabel2(timeline[century.index], displayPosition, configData);
                     return (
                       <div className={"century " + century.class} key={century.class}>
                         <div className="century-label" 
                           style={placement}
-                          >{timeline[century.index].Año + "p:" + placement.left + 
-                          " centuryLeft: " + (timeline[century.index].start  * configData.availableClicks + displayPosition) + 
-                          " centuryRight: " + (timeline[century.index].end * configData.availableClicks + displayPosition) + 
-                          " screenLeft: " + (-displayPosition) + 
-                          " screenRight: " + (-displayPosition + configData.screenWidth) +
-                          " midscreen: " + (-displayPosition + configData.screenWidth/2)}</div>
+                          >{timeline[century.index].Año /* + "pleft:" + placement.left  + "pright:" +  placement.right + 
+                          "\ncenturyLeft: " + (timeline[century.index].start  * configData.availableClicks) + 
+                          "\ncenturyRight: " + (timeline[century.index].end * configData.availableClicks) + 
+                          "\nscreenLeft: " + (-displayPosition) + 
+                          "\nscreenRight: " + (-displayPosition + configData.screenWidth) +
+                          "\nmidscreen: " + (-displayPosition + configData.screenWidth/2 )*/}</div>
                   
                         </div>
                     )

@@ -1,5 +1,5 @@
 'use client'
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 import Image from "next/image"
 import ImageSet from './ImageSet.js';
 
@@ -75,7 +75,7 @@ export default function FullScript(props) {
 
       return (
           <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}>
-            <div className='event-date' >{props.eventData['Año'] + " -- pos: "+ Number(props.displayPosition)  + " relative pos:"+ relativePosition} </div>
+            <div className='event-date' >{props.eventData['Año'] /* + " -- pos: "+ Number(props.displayPosition)  + " relative pos:"+ relativePosition */} </div>
             <div className="event-block-header">
               <span className='event-subject' >{props.eventData['Subject']}</span>
 

@@ -25,7 +25,7 @@
 	--event_transition_time: 0.05s;
 	--total_clicks: 43148px;
 	--prehistory_start: 0px;
-	--siglo_16_start: 0.1000;
+	--siglo_16_start: 0.0759;
 	--siglo_17_start: 0.2683;
 	--siglo_18_start: 0.2924;
 	--siglo_19_start: 0.3886;
@@ -126,17 +126,18 @@ display: block;}
 	color: var(--century_text);
 	left: var(--screencenter);
 	opacity: 1;
-	position: fixed;
+	position: relative;
 	padding: 20px 3px 0px 3px;	
 	z-index: 30;
 	font-size: 16pt;
 	font-style: normal;
 	font-weight: bold;
-	bottom: 50%;
+	bottom: 2px;
 	width: 300px;
-	text-shadow : 0 0 3px black;
 	transform: translate(-50%, 0);
 	text-align:center;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 .century {
 	height: 100%;

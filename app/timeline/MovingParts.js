@@ -23,8 +23,8 @@ export default  function MovingParts (props){
     function onMessage (event) {
         if ( event !== undefined ) {
             //console.log("sliderPosition", event);
-            if (typeof Number(event.data) === "number") {
-            setSliderPosition(event.data);
+            if ( ! isNaN(event.data)) {
+            setSliderPosition(Number(event.data));
             setIdleMode(false);
             }
         }
