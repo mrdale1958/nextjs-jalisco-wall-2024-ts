@@ -13,9 +13,13 @@ export default  function MovingParts (props){
   const [idleMode,setIdleMode] = useState(false)
   const units = 60; // 1 for testing, 60 for production
   useEffect(() => {
+    let idleTime = Number(props.configData.idleTime);
+    if ((sliderPosition < 800) || (sliderPosition > props.configData.availableClicks - 800)) {
+      idleTime = idleTime/10;
+    }
     const idleInterval = setInterval(() => {
         setIdleMode(true);
-        }, 1000 * units * Number(props.configData.idleTime)); // seconds for testing, minutes for production
+        }, 1000 * units * idleTime); // seconds for testing, minutes for production
 
 
         return () => clearInterval(idleInterval);
