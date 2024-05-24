@@ -111,8 +111,20 @@ function placeLabel2 (century, displayLeft, configData) {
                     )
                   })}
                   <div className="end-caps">
-                    <div className="end-cap left" >&nbsp;</div>
-                    <div className="end-cap right" >&nbsp;</div>
+                    <div className="end-cap left" >
+                      <div className="instructions">
+                        <div className="exhibit-title">HISTORIA</div>
+                        <div className="instruction-text">Desliza la pantalla lentamente para descubrir la historia de Jalisco.</div>
+                        <div className="animate-right"><div className="down-arrow"></div></div>
+                      </div>
+                    </div>
+                    <div className="end-cap right" >
+                      <div className="instructions">
+                      <div className="exhibit-title">HISTORIA</div>
+                        <div className="instruction-text">Desliza la pantalla lentamente para descubrir la historia de Jalisco.</div>
+                        <div className="animate-left"><div className="down-arrow"></div></div>
+                      </div>
+                    </div>
                   </div>
             
           </div>

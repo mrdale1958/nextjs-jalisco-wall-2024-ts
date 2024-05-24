@@ -207,9 +207,79 @@ display: block;}
     width: 44768px;
     height: 2560px;
     background-color: transparent;
-    z-index: 20;
+    z-index: 200;
     left: 0;
     top: -1280px;
+}
+.instructions {
+	font-size: xxx-large;
+    color: black;
+    width: 2500px;
+    text-align: center;
+    position: relative;
+}
+
+.left .instructions {
+    transform: translateY(1180px) translateX(-1050px) rotateZ(-90deg);
+    
+    left: var(--century-height);
+}
+
+.right .instructions {
+	transform: translateY(1180px) translateX(1050px) rotateZ(90deg);
+    
+    right: var(--century-height);
+}
+
+.down-arrow {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 50px solid #555;
+	margin: auto;
+}
+.animate-right{
+	animation-duration: 3s;
+	animation-name: slide-right;
+	animation-iteration-count: infinite;
+	position:relative;
+  }
+  
+  @keyframes slide-right {
+	from {
+	  top: 0px;
+	}
+  
+	to {
+	  top: 400px;
+	}
+  }
+
+  .animate-right{
+	animation-duration: 3s;
+	animation-name: slide-left;
+	animation-iteration-count: infinite;
+	position:relative;
+  }
+  
+  @keyframes slide-left {
+	from {
+	  top: 0px;
+	}
+  
+	to {
+	  top: 400px;
+	}
+  }
+.exhibit-title {
+	font-weight: bolder;
+	font-size: 72px
+}
+
+.instruction-text {
+	font-size: 64px;
+	font-weight: bold;
 }
 
 .end-cap.left {

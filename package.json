@@ -22,7 +22,6 @@
     "preelectron-pack": "yarn build"
   },
   "dependencies": {
-    "bufferutil": "^4.0.8",
     "framer-motion": "^11.1.1",
     "isomorphic-dompurify": "^2.10.0",
     "next": "^13.5.6",
