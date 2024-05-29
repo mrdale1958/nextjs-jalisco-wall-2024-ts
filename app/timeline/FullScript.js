@@ -58,12 +58,14 @@ export default function FullScript(props) {
       ///>	
       }
       let slotWidth = (props.configData.screenWidth-props.configData.episode_width)/(imageSetData.length);
-      let relativePosition = -(Number(props.displayPosition) - props.left_edge - props.configData.offset_left);
+      //let slotWidth = props.configData.screenWidth/imageSetData.length;
+      let relativePosition = -(Number(props.displayPosition) - props.left_edge - props.configData.offset_left - props.configData.episode_width/2);
       for (var imageIndex in imageSetData) {
         let image = Number(imageIndex);
-          let imageSlot = { 
-          left: slotWidth * image, 
-          right: slotWidth * (image + 1)};
+        let imageSlot = { 
+          left: slotWidth * image + props.configData.episode_width / 2, 
+          right: slotWidth * (image + 1) + props.configData.episode_width / 2
+        };
         if (relativePosition  > imageSlot.left && relativePosition < imageSlot.right) {
           currentImageIndex = image;
         }

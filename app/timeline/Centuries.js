@@ -40,7 +40,7 @@ function placeLabel2 (century, displayLeft, configData) {
   }  else if ((Lbar < Rscreen) &&  (Lbar > midpoint-bumper)) {
     newStyle = {left:"150px"};
   } else if ((Rbar < midpoint+bumper) && (Rbar > Lscreen)) {
-    newStyle = {left:String( Rbar - bumper) + "px"};
+    newStyle = {left:String( Rbar - Lbar - bumper) + "px"};
   } else if ((Lbar < midpoint) && (Rbar > midpoint)) {
     newStyle = {left: String( midpoint - Lbar) + "px"};
   }
@@ -113,15 +113,11 @@ function placeLabel2 (century, displayLeft, configData) {
                   <div className="end-caps">
                     <div className="end-cap left" >
                       <div className="instructions">
-                        <div className="exhibit-title">HISTORIA</div>
-                        <div className="instruction-text">Desliza la pantalla lentamente para descubrir la historia de Jalisco.</div>
                         <div className="animate-right"><div className="down-arrow"></div></div>
                       </div>
                     </div>
                     <div className="end-cap right" >
                       <div className="instructions">
-                      <div className="exhibit-title">HISTORIA</div>
-                        <div className="instruction-text">Desliza la pantalla lentamente para descubrir la historia de Jalisco.</div>
                         <div className="animate-left"><div className="down-arrow"></div></div>
                       </div>
                     </div>

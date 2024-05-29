@@ -19,7 +19,7 @@
     "screenWidthPixels" : 1601,
     "screenWidth" : 1601,
     "idleText": "Desliza la pantalla lentamente para descubrir la historia de Jalisco.",
-    "idleTime": 10,
+    "idleTime": 1,
     "sortedByYear" : {},
     "yearCount" : 0,
     "maxClicks" : 43148,

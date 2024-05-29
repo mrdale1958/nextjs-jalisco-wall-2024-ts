@@ -11,7 +11,7 @@ export default  function MovingParts (props){
   //const sliderPosition = await  SliderPosition();
   const [sliderPosition, setSliderPosition] = useState(0);
   const [idleMode,setIdleMode] = useState(false)
-  const units = 60; // 1 for testing, 60 for production
+  const units = 600; // 1 for testing, 600 for production
   useEffect(() => {
     let idleTime = Number(props.configData.idleTime);
     if ((sliderPosition < 800) || (sliderPosition > props.configData.availableClicks - 800)) {

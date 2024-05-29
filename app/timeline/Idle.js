@@ -2,26 +2,29 @@ import { motion } from 'framer-motion';
 
 export default function Idle(props) {
     return (
-        <div id="idle-block" className={(props.idleMode) ? "active" : "inactive"}>
-            <motion.div initial="hidden" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 10 }}
+        <div id="idle-block" className={(props.idleMode) ? "active" : "inactive"} >
+          <div style={{left:"0px", top:"1122px", width:"80%", position:"absolute"}}>
+            <motion.div initial="start" animate={{ rotate: 359, scale: 0.5 }} transition={{ repeat: Infinity, duration: 10 }}
 
 variants={{
-  hidden: {
-    scale: .8,
-    opacity: 1,
-    x: "0px",
-    y: "1250px"
+  start: {
+    scale: 1.0,
+    rotate: 0
 
   },
   visible: {
     scale: 1,
-    opacity: 1,
+    rotate: 360,
     transition: {
       delay: .4
     }
   },
-}}><div>{props.configData.idleText}</div>
+}}><div><div className="instructions" style={{color:"white", width:"100%"}}>
+<div className="exhibit-title">HISTORIA</div>
+<div className="instruction-text">Desliza la pantalla lentamente para descubrir la historia de Jalisco.</div>
+</div></div>
         </motion.div>
+        </div>
         </div>
   );
 }
