@@ -220,13 +220,13 @@ display: block;}
 }
 
 .left .instructions {
-    transform: translateY(1180px) translateX(-1050px) rotateZ(-90deg);
+    transform: translateY(1280px) translateX(-1250px) rotateZ(-90deg);
     
     left: var(--century-height);
 }
 
 .right .instructions {
-	transform: translateY(1180px) translateX(1050px) rotateZ(90deg);
+	transform: translateY(1280px) translateX(1250px) rotateZ(90deg);
     
     right: var(--century-height);
 }
