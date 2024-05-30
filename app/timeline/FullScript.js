@@ -5,15 +5,12 @@ import ImageSet from './ImageSet.js';
 
 export default function FullScript(props) {
    
-    //  this.state = {color: "red", timePosition: 0};
-    //console.log("FullScript", props.eventData);
-//debugger;
-    function categoryToClassname(category) {
-      let retVal = category.replace(/[ /]/g, "_").toLowerCase();
-      //console.log(category,retVal);
-      return retVal;
-    }      
-    
+    if (props.displayPosition < (props.left_edge - props.configData.episodePitch) || props.displayPosition > (props.right_edge + props.configData.episodePitch)) {  
+      return (
+        <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}/>
+
+      );
+    }
     let eventBody;
     if (props.eventData['Acontecimiento'] !== "") {
       eventBody = <div className='event-body' ><div className="event-text-container"><p className="event-text" //</div>>{props.eventData['Acontecimiento']}</p></div></div>
@@ -57,24 +54,37 @@ export default function FullScript(props) {
         //width="200" height="200"
       ///>	
       }
-      let slotWidth = (props.configData.screenWidth-props.configData.episode_width)/(imageSetData.length);
-      //let slotWidth = props.configData.screenWidth/imageSetData.length;
-      let relativePosition = -(Number(props.displayPosition) - props.left_edge - props.configData.offset_left - props.configData.episode_width/2);
-      for (var imageIndex in imageSetData) {
-        let image = Number(imageIndex);
-        let imageSlot = { 
-          left: slotWidth * image + props.configData.episode_width / 2, 
-          right: slotWidth * (image + 1) + props.configData.episode_width / 2
-        };
-        if (relativePosition  > imageSlot.left && relativePosition < imageSlot.right) {
-          currentImageIndex = image;
-        }
-        //console.log("ImageSet", slotWidth, imageIndex, imageSlot, relativePosition, currentImageIndex);
-          /* if (imageSetData[image].src === undefined) {
-          imageSetData[image].src = ""; */
-        }
+      const valley = { width: props.configData.screenWidth-props.configData.episodePitch,
+                      left: props.left_edge + props.configData.episodePitch - 400,
+                      right: props.left_edge + props.configData.screenWidth - 400};
+      if (props.displayPosition <   valley.left) {
+        currentImageIndex = imageSetData.length - 1;
+        //if (props.eventData['Año'] === '1600') console.log(props.displayPosition, props.eventData['Año'], "left", currentImageIndex, props.left_edge, valley.left, valley.right);
 
+      } else if (props.displayPosition > valley.right) {
+        currentImageIndex = 0;
+        //if (props.eventData['Año'] === '1925') console.log(props.displayPosition, props.eventData['Año'], "right", currentImageIndex, props.left_edge, valley.left, valley.right);
 
+      } else {
+        let slotWidth = valley.width/(imageSetData.length-1);
+        //let slotWidth = props.configData.screenWidth/imageSetData.length;
+        let relativePosition = (Number(props.displayPosition) - props.left_edge -  props.configData.episodePitch/2);
+        //if (props.eventData['Año'] === '1600') console.log(props.displayPosition, props.eventData['Año'], slotWidth, valley.left, valley.right, relativePosition);
+        for (var imageIndex in imageSetData) {
+          let image =  Number(imageIndex);
+          let imageSlot = { 
+            left: slotWidth * image , 
+            right: slotWidth * (image + 1)
+          };
+          if (relativePosition  > imageSlot.left && relativePosition < imageSlot.right) {
+            currentImageIndex = imageSetData.length - 1 - image;
+            //if (props.eventData['Año'] === '1600') console.log(props.displayPosition, props.eventData['Año'], "currentImage", currentImageIndex, slotWidth, imageSlot.left, imageSlot.right, relativePosition);
+          } 
+          //console.log("ImageSet", slotWidth, imageIndex, imageSlot, relativePosition, currentImageIndex);
+            /* if (imageSetData[image].src === undefined) {
+            imageSetData[image].src = ""; */
+        }
+      }
       return (
           <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}>
             <div className='event-date' >{props.eventData['Año'] /* + " -- pos: "+ Number(props.displayPosition)  + " relative pos:"+ relativePosition */} </div>

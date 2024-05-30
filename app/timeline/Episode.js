@@ -17,6 +17,7 @@ export default  function Episode(props ) {
   }
   //const left_edge = props.eventData.start * (props.configData.availableClicks-props.configData.offset_left-props.configData.offset_right); //fractionToPixels(props.eventData.start);
   const left_edge = (props.eventData.eventNumber - 1) * props.configData.episodePitch; //fractionToPixels(props.eventData.start);
+  const right_edge = (props.eventData.eventNumber) * props.configData.episodePitch; //fractionToPixels(props.eventData.start);
   //const episodeRange ={ left: fractionToPixels(props.eventData.start), right: fractionToPixels(props.eventData.end)}
   let mudd = props.eventData.Type;
       let magicDiv;
@@ -44,7 +45,7 @@ export default  function Episode(props ) {
        } else if (mudd == "Info") {
         let mode = "none";
         let currentScreenPosition = props.eventData.position - props.displayPosition + props.configData.screenWidth/2;
-        if ( currentScreenPosition >= props.configData.leftEdge) {
+        /* if ( currentScreenPosition >= props.configData.leftEdge) {
             if (currentScreenPosition > props.configData.yearTrigger) {
                 //if (currentScreenPosition > this.props.configData.labelTrigger) {
                     if (currentScreenPosition > props.configData.contentTrigger) {
@@ -72,10 +73,10 @@ export default  function Episode(props ) {
             } else {
                 mode = "dot";
             } 
-        } 
+        } */
         let phaseClassName = ""; //"event-" + mode
-         
-         magicDiv = <FullScript left_edge={left_edge} id = {props.eventData.eventNumber} className = {"event-info " + phaseClassName} eventData = {props.eventData}
+          
+         magicDiv = <FullScript left_edge={left_edge} right_edge={right_edge} id = {props.eventData.eventNumber} className = {"event-info " + phaseClassName} eventData = {props.eventData}
          displayPosition={props.displayPosition} 
          configData={props.configData}/>
  
