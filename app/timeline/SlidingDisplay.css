@@ -95,10 +95,10 @@ body {
 
 #idle-block {
 	position: absolute;
-	width:100%;
+	width:1608px;
 	height:100%;
-	background-color: #ff000070;
-	color: white;
+	background-color: #fbf7f7;
+	color: rgb(6, 0, 0);
 	font-size:64pt;
 	z-index: 1000;
 	text-align: center;
@@ -108,6 +108,13 @@ body {
 display: block;}
 #idle-block.inactive {
 	display: none;
+}
+
+#idle-text {
+	left: 161px;
+	top: 330px;
+	width: 80%;
+	position: absolute;
 }
 
 .event-era {
@@ -273,13 +280,20 @@ display: block;}
 	}
   }
 .exhibit-title {
-	font-weight: bolder;
-	font-size: 72px
+	font-weight: 500;
+	font-size: 200px;
+}
+
+.exhibit-description {
+	font-size: 72px;
+	margin: 70px 70px 150px 70px;
+	font-weight: 400;
 }
 
 .instruction-text {
 	font-size: 64px;
-	font-weight: bold;
+	font-weight: 300;
+	margin: 0px 100px;
 }
 
 .end-cap.left {
