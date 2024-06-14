@@ -21,7 +21,7 @@
     "exhibitTitle": "HISTORIA",
     "exhibitDescription": "La historia es la base sobre la que se construye la identidad de las personas. Los eventos históricos reflejan la evolución sociocultural y conocerlos proporciona el contexto necesario para entender las creencias, los valores y las tradiciones contribuyendo a fortalecer las raíces culturales.",
     "idleText": "Desliza la pantalla lentamente para descubrir la historia de Jalisco.",
-    "idleTime": 1,
+    "idleTime": 45,
     "sortedByYear" : {},
     "yearCount" : 0,
     "maxClicks" : 43148,

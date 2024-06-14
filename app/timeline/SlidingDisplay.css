@@ -115,6 +115,7 @@ display: block;}
 	top: 330px;
 	width: 80%;
 	position: absolute;
+	display: none;
 }
 
 .event-era {

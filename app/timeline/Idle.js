@@ -4,6 +4,13 @@ export default function Idle(props) {
   if ( props.idleMode ) {
     return (
       <div id="idle-block" className={(props.idleMode) ? "active" : "inactive"} >
+        <div className="idle-image">
+          <img src={"/Historia_Screensaver.png"}
+                        alt={"exhhibit description"}
+                        className=""
+                        
+                    />
+        </div>
         <div id="idle-text">
           {/* <motion.div initial="start" animate={{ rotate: 359, scale: 0.5 }} transition={{ repeat: Infinity, duration: 10 }}
             variants={{
