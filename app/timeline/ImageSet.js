@@ -36,7 +36,7 @@ export default  function ImageSet( props ) {
                     <CrossfadeImage src={"/0_Imágenes/" + image.src}
                         alt={image.alt}
                         className=""
-                        
+                        duration={600}
                     />
                     <ImageCaption caption={image.caption}/>
                     </div>
