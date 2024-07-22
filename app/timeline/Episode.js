@@ -17,7 +17,7 @@ export default  function Episode(props ) {
   }
   //const left_edge = props.eventData.start * (props.configData.availableClicks-props.configData.offset_left-props.configData.offset_right); //fractionToPixels(props.eventData.start);
   const left_edge = (props.eventData.eventNumber - 1) * props.configData.episodePitch; //fractionToPixels(props.eventData.start);
-  const right_edge = (props.eventData.eventNumber) * props.configData.episodePitch; //fractionToPixels(props.eventData.start);
+  const right_edge = (props.eventData.eventNumber) * props.configData.episodePitch + 120 + 43; // 1200 (offset) - 1080 (css width of episode) , 1080 - 1037 (episode pitch)fractionToPixels(props.eventData.start);
   //const episodeRange ={ left: fractionToPixels(props.eventData.start), right: fractionToPixels(props.eventData.end)}
   let mudd = props.eventData.Type;
       let magicDiv;

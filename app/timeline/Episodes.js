@@ -65,8 +65,8 @@ export default  function  Episodes (props) {
         return (
             <div id='timeline-block' style={{left: 
               String(
-                Math.max(-configData.availableClicks + props.configData.offset_right, 
-                  Math.min(configData.offset_left, props.configData.offset_left-props.displayPosition))) + "px"}}>
+                Math.max(-configData.availableClicks + configData.offset_right, 
+                  Math.min(configData.offset_left, configData.offset_left-displayPosition))) + "px"}}>
             {
             timeline.map((event) => {
         //console.log("Episodes",event.eventNumber, event);

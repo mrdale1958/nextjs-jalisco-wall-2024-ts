@@ -5,7 +5,7 @@ import ImageSet from './ImageSet.js';
 
 export default function FullScript(props) {
    
-    if (props.displayPosition < (props.left_edge - props.configData.episodePitch) || props.displayPosition > (props.right_edge + props.configData.episodePitch)) {  
+    if (props.displayPosition < (props.left_edge - props.configData.episodePitch + 1080) || props.displayPosition > (props.right_edge + props.configData.episodePitch)) {  
       return (
         <div className={props.className + " " /*+ categoryToClassname(eventData['Type'])*/}/>
 

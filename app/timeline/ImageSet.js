@@ -1,5 +1,6 @@
 import Image from "next/image"
 import ImageCaption from './ImageCaption.js';
+import CrossfadeImage from "react-crossfade-image";
 
 export default  function ImageSet( props ) {
     function build_divs(imageList) {
@@ -32,7 +33,7 @@ export default  function ImageSet( props ) {
 
                 //console.log("ImageSet", image.src, image.alt, displayState, setKeyIndex);
                 return(<div className={"captioned-image " + displayState} key={image.alt + setKeyIndex}>
-                    <img src={"/0_Imágenes/" + image.src}
+                    <CrossfadeImage src={"/0_Imágenes/" + image.src}
                         alt={image.alt}
                         className=""
                         
