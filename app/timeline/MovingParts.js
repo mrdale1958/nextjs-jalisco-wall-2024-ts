@@ -11,31 +11,39 @@ export default  function MovingParts (props){
   //const sliderPosition = await  SliderPosition();
   const [sliderPosition, setSliderPosition] = useState(0);
   const [idleMode,setIdleMode] = useState(false)
+  const [readyToIdle,setReadyToIdle] = useState(true)
   const units = 1; // 1 for production - seconds
   const intervalRef = useRef();
 
-  useEffect(() => {
+  // Function to start or reset the interval
+  const startOrResetInterval = () => {
+    clearInterval(intervalRef.current); // Clear existing interval
     let idleTime = Number(props.configData.idleTime);
     /* if ((sliderPosition < 800) || (sliderPosition > props.configData.availableClicks - 800)) {
-      idleTime = idleTime/10;
+      idleTime = idleTime / 10;
     } */
+    setReadyToIdle(true);
     intervalRef.current = setInterval(() => {
-        setIdleMode(true);
-        }, 1000 * units * idleTime); // seconds for testing, minutes for production
+      setIdleMode(true);
+    }, 1000 * units * idleTime); // seconds for testing, minutes for production
+  };
 
+  useEffect(() => {
+    startOrResetInterval(); // Set up the interval on mount
+    return () => clearInterval(intervalRef.current); // Cleanup on unmount
+  }, [idleMode]); // Dependency on idleMode might cause the interval to reset unintentionally
 
-        return () => clearInterval(intervalRef.current);
-    }, [idleMode]);
-    function onMessage (event) {
-        if ( event !== undefined ) {
-            //console.log("sliderPosition", event);
-            if ( ! isNaN(event.data)) {
-            setSliderPosition(Number(event.data));
-            clearInterval(intervalRef.current); // Clear interval on event
-            setIdleMode(false);
-            }
-        }
+  function onMessage(event) {
+    if (event !== undefined) {
+      console.log("sliderPosition", event);
+      if (!isNaN(event.data)) {
+        setSliderPosition(Number(event.data));
+        startOrResetInterval(); // Reset the interval on event
+        setReadyToIdle(false);
+        setIdleMode(false);
+      }
     }
+  }
     useEffect(() => {
       //console.log("setting up for useEffect");
     window.addEventListener("message", onMessage);
