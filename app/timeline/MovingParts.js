@@ -35,7 +35,7 @@ export default  function MovingParts (props){
 
   function onMessage(event) {
     if (event !== undefined) {
-      console.log("sliderPosition", event);
+      //console.log("sliderPosition", event.data);
       if (!isNaN(event.data)) {
         setSliderPosition(Number(event.data));
         startOrResetInterval(); // Reset the interval on event
